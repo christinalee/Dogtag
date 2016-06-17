@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>NSObject+Rx.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MVVM.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MVVMTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MVVMUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0FA33E05A3F60F08EAE0BB7E1FD1B722</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C4E5CD74DF2446B1E21BC62B86EA63F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24ECEB2EB2CF55372FC861B7AD5B0EA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>69C842C707FD9C081E5D5767300EBA04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB1CAB2EFFBCAF369531F3B5A0873089</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

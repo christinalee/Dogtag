@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagView" customModule="MVVM" customModuleProvider="target">
+            <connections>
+                <outlet property="deleteButton" destination="PFh-JL-YDL" id="MFQ-T1-PBA"/>
+                <outlet property="imageContainerView" destination="QAq-bm-lav" id="9Hh-tg-RUP"/>
+                <outlet property="imageView" destination="gei-e5-dMo" id="E4n-Dq-284"/>
+                <outlet property="labelContainerView" destination="g1b-hT-egU" id="etD-vI-n25"/>
+                <outlet property="tagLabel" destination="tBP-lD-IIR" id="DEg-Fk-pn1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" horizontalHuggingPriority="251" id="iN0-l3-epB" userLabel="Tag Container">
+            <rect key="frame" x="0.0" y="0.0" width="243" height="76"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1b-hT-egU">
+                    <rect key="frame" x="10" y="10" width="223" height="25"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a tag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBP-lD-IIR" userLabel="tagLabel">
+                            <rect key="frame" x="4" y="4" width="215" height="17"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="vOS-Xb-IKv"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="tBP-lD-IIR" firstAttribute="top" secondItem="g1b-hT-egU" secondAttribute="top" constant="4" identifier="TagLabelTopPadding" id="6qb-f7-DOA"/>
+                        <constraint firstAttribute="trailing" secondItem="tBP-lD-IIR" secondAttribute="trailing" constant="4" identifier="TagLabelTrailingPadding" id="Ris-H3-QXX"/>
+                        <constraint firstAttribute="bottom" secondItem="tBP-lD-IIR" secondAttribute="bottom" constant="4" identifier="TagLabelBottomPadding" id="c0y-uH-SdM"/>
+                        <constraint firstItem="tBP-lD-IIR" firstAttribute="leading" secondItem="g1b-hT-egU" secondAttribute="leading" constant="4" identifier="TagLabelLeadingPadding" id="sa2-zF-dcq"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="byy-aN-gbL" appends="YES" id="zce-lf-onD"/>
+                        <outletCollection property="gestureRecognizers" destination="uhh-aa-uVz" appends="YES" id="e5m-Ue-Rpm"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAq-bm-lav" userLabel="Icon Container View">
+                    <rect key="frame" x="108" y="33" width="28" height="28"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" restorationIdentifier="iconView" translatesAutoresizingMaskIntoConstraints="NO" id="gei-e5-dMo" userLabel="Icon Image View">
+                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                            <color key="backgroundColor" red="1" green="0.46274509803921571" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="gei-e5-dMo" secondAttribute="height" multiplier="1:1" id="WO8-r3-pV7"/>
+                                <constraint firstAttribute="height" constant="28" id="yip-zl-f4u"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="rbR-0J-hKU" appends="YES" id="S2b-hi-VPa"/>
+                            </connections>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="QAq-bm-lav" secondAttribute="height" multiplier="1:1" id="9do-f3-6ah"/>
+                        <constraint firstItem="gei-e5-dMo" firstAttribute="centerX" secondItem="QAq-bm-lav" secondAttribute="centerX" id="FVR-KO-b0B"/>
+                        <constraint firstAttribute="height" constant="28" id="gj4-OH-Dzn"/>
+                        <constraint firstItem="gei-e5-dMo" firstAttribute="centerY" secondItem="QAq-bm-lav" secondAttribute="centerY" id="ouN-wi-Sqz"/>
+                    </constraints>
+                </view>
+                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-JL-YDL">
+                    <rect key="frame" x="223" y="0.0" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PFh-JL-YDL" secondAttribute="height" multiplier="1:1" identifier="DeleteButtonAspectRatio" id="GFk-si-aNM"/>
+                        <constraint firstAttribute="width" constant="20" identifier="DeleteButtonWidth" id="oSk-5h-gfs"/>
+                    </constraints>
+                    <state key="normal" image="icon_x_delete.png"/>
+                    <connections>
+                        <action selector="deleteButtonPressed:" destination="-1" eventType="touchUpInside" id="xWl-KR-Njm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="g1b-hT-egU" secondAttribute="trailing" constant="10" identifier="LabelContainerTrailingPadding" id="8t6-NP-l2f"/>
+                <constraint firstItem="QAq-bm-lav" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g1b-hT-egU" secondAttribute="leading" priority="750" constant="8" id="IRg-fz-2a3"/>
+                <constraint firstItem="PFh-JL-YDL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" identifier="DeleteButtonYPosition" id="LXt-KO-2nf"/>
+                <constraint firstItem="g1b-hT-egU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" identifier="LabelContainerLeadingPadding" id="VhO-2r-iFa"/>
+                <constraint firstAttribute="trailing" secondItem="PFh-JL-YDL" secondAttribute="trailing" identifier="DeleteButtonXPosition" id="bNz-dd-WR1"/>
+                <constraint firstItem="QAq-bm-lav" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g1b-hT-egU" secondAttribute="trailing" priority="750" constant="8" id="cNf-LI-guJ"/>
+                <constraint firstItem="QAq-bm-lav" firstAttribute="top" secondItem="g1b-hT-egU" secondAttribute="bottom" constant="-2" id="dXB-PL-tl1"/>
+                <constraint firstItem="QAq-bm-lav" firstAttribute="centerX" secondItem="g1b-hT-egU" secondAttribute="centerX" id="f5m-1l-6uh"/>
+                <constraint firstItem="g1b-hT-egU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" identifier="LabelContainerTopPadding" id="uKb-uV-TSr"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QAq-bm-lav" secondAttribute="bottom" constant="10" id="xIe-94-6aS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Xbg-5Y-gHi" appends="YES" id="C8u-Aa-LLc"/>
+            </connections>
+            <point key="canvasLocation" x="50.5" y="216"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="Xbg-5Y-gHi">
+            <connections>
+                <action selector="panTag:" destination="-1" id="tNu-wN-rqS"/>
+            </connections>
+        </panGestureRecognizer>
+        <tapGestureRecognizer id="byy-aN-gbL" userLabel="LabelView Tap Gesture Recognizer">
+            <connections>
+                <action selector="tagLabelTapped:" destination="-1" id="Q3d-lz-mKB"/>
+            </connections>
+        </tapGestureRecognizer>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="uhh-aa-uVz">
+            <connections>
+                <action selector="longPress:" destination="-1" id="DZq-Bj-W9z"/>
+            </connections>
+        </pongPressGestureRecognizer>
+        <tapGestureRecognizer id="rbR-0J-hKU" userLabel="ImageView Tap Gesture Recognizer">
+            <connections>
+                <action selector="imageViewTapped:" destination="-1" id="q2E-mV-rVA"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="icon_x_delete.png" width="20" height="20"/>
+    </resources>
+</document>
