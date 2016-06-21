@@ -180,15 +180,13 @@ public class TagView: UIView {
     
     setup()
     
-    canEdit = true //tag is created by current user
+    canEdit = true //todo: hardcoded for example, but was based on real property
     self.parentSize = parentSize
     tagLabel.attributedText = text
     
-    //todo: handle photo
-//    if imgUrl != "" {
-//      let url = NSURL(string: imgUrl)
-//      imageView.yr_setImageWithUrl(url!)
-//    }
+    if imgUrl != "" {
+      imageView.image = UIImage(named: imgUrl)
+    }
     sizeToFit()
     
   }
