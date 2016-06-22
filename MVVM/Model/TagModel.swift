@@ -257,8 +257,8 @@ public enum TagViewData {
 
 protocol TagModel {
   var model: Driver<ConcreteTagModel.State> { get }
-  var tagIntents: TagIntents { get } //todo: make into protocol
-  var tagVCIntents: TagVCIntents { get } //todo: make into protocol
+  var tagIntents: TagIntents { get }
+  var tagVCIntents: TagVCIntents { get }
 }
 
 class ConcreteTagModel: TagModel {
@@ -276,10 +276,15 @@ class ConcreteTagModel: TagModel {
     self.tagIntents = tagIntents
     self.tagVCIntents = tagVCIntents
     
-    let intialState = State(mode: .None, photoId: nil, tags: Dictionary())
+    //create fake server tag for initial state -- included for Demo purposes only
+    var initialDict = Dictionary<String, TagViewData>()
+    let serverTag1 = TagCreationHelper.makeNewServerTag("Welcome!", location: CGPoint(x: 5, y: 0.5), userId: TagOwner.OtherPerson)
+    let tag1 = TagViewData.ServerTag(tagInfo: serverTag1, state: .Created, syncRequirement: .None)
+    initialDict[tag1.id] = tag1
+    
+    let intialState = State(mode: .None, photoId: nil, tags: initialDict)
     let tagReducers: Observable<(State) -> State> = TagIntentsHelper.reduce(tagIntents)
     let vcReducers: Observable<(State) -> State> = TagVCIntentsHelper.reduce(tagVCIntents)
-    // todo: add a new reducer
     
     model = Observable.of(
       tagReducers,
@@ -287,6 +292,7 @@ class ConcreteTagModel: TagModel {
     ).merge().scan(intialState, accumulator: { (currentState, reducer) -> State in
       let newState = reducer(currentState)
       return newState
-    }).asDriver(onErrorDriveWith: Driver.never())
+    }).startWith(intialState)
+      .asDriver(onErrorDriveWith: Driver.never())
   }
 }

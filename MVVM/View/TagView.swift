@@ -172,15 +172,15 @@ public class TagView: UIView {
     setup()
   }
   
-  public init(id: String, text: NSAttributedString, location: CGPoint, parentSize: CGSize, imgUrl: String, tagIntents: TagIntents){
+  public init(tagId: String, userId: String, text: NSAttributedString, location: CGPoint, parentSize: CGSize, imgUrl: String, tagIntents: TagIntents){
     let frame = CGRect(x: location.x, y: location.y, width: 0, height: 0)
     self.tagIntents = tagIntents
-    self.viewId = id
+    self.viewId = tagId
     super.init(frame: frame)
     
     setup()
     
-    canEdit = true //todo: hardcoded for example, but was based on real property
+    canEdit = userId == TagOwner.Own //hardcoded for example, but was based on real property
     self.parentSize = parentSize
     tagLabel.attributedText = text
     
@@ -191,8 +191,8 @@ public class TagView: UIView {
     
   }
   
-  public convenience init(id: String, text: NSAttributedString, location: CGPoint, parentSize: CGSize, imgUrl: String, centerOnTooth: Bool, tagIntents: TagIntents){
-    self.init(id: id, text: text, location: location, parentSize: parentSize, imgUrl: imgUrl, tagIntents: tagIntents)
+  public convenience init(tagId: String, userId: String, text: NSAttributedString, location: CGPoint, parentSize: CGSize, imgUrl: String, centerOnTooth: Bool, tagIntents: TagIntents){
+    self.init(tagId: tagId, userId: userId, text: text, location: location, parentSize: parentSize, imgUrl: imgUrl, tagIntents: tagIntents)
     
     if centerOnTooth {
       //used for long press tags

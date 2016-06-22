@@ -35,6 +35,15 @@ struct TagCreationHelper {
     return UserTagInfo(id: tagId, text: attributedText, location: location, imgUrl: imgUrl, centerOnTooth: false)
   }
   
+  // This function is here purely for example. Server tags should, unsurprisingly, always come from the server and are never created client side.
+  static func makeNewServerTag(text: String, location: CGPoint, userId: String) -> PhotoTypes.Tag {
+    let attributedText = getAttributedString(text, fontSize: 12.0)
+    let canEdit = userId == TagOwner.Own
+    let currentMillis = My.getCurrentMillis()
+    
+    return PhotoTypes.Tag(tagId: String(currentMillis), location: location, text: attributedText, canEdit: canEdit, createdAt: Double(currentMillis), createdBy: userId)
+  }
+  
   private static func getAttributedString(nonEmptyText: String, fontSize: CGFloat) -> NSAttributedString {
     let regularFont = UIFont(name: "AvenirNext-Medium", size: fontSize)
     let boldFont = UIFont(name: "AvenirNext-DemiBold", size: fontSize)

@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+//Because we don't have real userids
+public struct TagOwner {
+  public static let Own: String = "own123"
+  public static let OtherPerson: String = "otherPerson123"
+}
+
 public class ContactModel: NSObject {
   public class MatchedContact {
     var name: String
