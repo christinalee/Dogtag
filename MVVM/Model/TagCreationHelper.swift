@@ -18,7 +18,7 @@ struct TagCreationHelper {
   
   static func makeNewTag(text: String, location: TagViewLocation?) -> UserTagInfo {
     let tagId = String(getCurrentMillis())
-    let imgUrl = "avatar_shorts_johnnytsunami" //hardcoding asset for demo, but this should be a server sent profile photo url
+    let imgUrl = "dog-pink" //hardcoding asset for demo, but this should be a server sent profile photo url
     let attributedText = My.getAttributedString(text, fontSize: 12.0)
     
     if let location = location {

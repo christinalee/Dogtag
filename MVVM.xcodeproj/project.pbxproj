@@ -18,15 +18,6 @@
 		CF11C2DB1D19A9CB002D4FA9 /* icon_x_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2D21D19A9CB002D4FA9 /* icon_x_delete@2x.png */; };
 		CF11C2DC1D19A9CB002D4FA9 /* icon_x_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2D31D19A9CB002D4FA9 /* icon_x_delete@3x.png */; };
 		CF11C2DE1D19AC6E002D4FA9 /* dog.JPG in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2DD1D19AC6E002D4FA9 /* dog.JPG */; };
-		CF11C2EB1D19B02B002D4FA9 /* avatar_shorts_bazooka.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E21D19B02B002D4FA9 /* avatar_shorts_bazooka.png */; };
-		CF11C2EC1D19B02B002D4FA9 /* avatar_shorts_bazooka@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E31D19B02B002D4FA9 /* avatar_shorts_bazooka@2x.png */; };
-		CF11C2ED1D19B02B002D4FA9 /* avatar_shorts_bazooka@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E41D19B02B002D4FA9 /* avatar_shorts_bazooka@3x.png */; };
-		CF11C2EE1D19B02B002D4FA9 /* avatar_shorts_johnnytsunami.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E51D19B02B002D4FA9 /* avatar_shorts_johnnytsunami.png */; };
-		CF11C2EF1D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E61D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@2x.png */; };
-		CF11C2F01D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E71D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@3x.png */; };
-		CF11C2F11D19B02B002D4FA9 /* avatar_shorts_surfandchill.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E81D19B02B002D4FA9 /* avatar_shorts_surfandchill.png */; };
-		CF11C2F21D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E91D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png */; };
-		CF11C2F31D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2EA1D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png */; };
 		CF11C3021D1AFFAD002D4FA9 /* TagViewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3011D1AFFAD002D4FA9 /* TagViewLocation.swift */; };
 		CF11C3041D1AFFE1002D4FA9 /* TagVCMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3031D1AFFE1002D4FA9 /* TagVCMode.swift */; };
 		CF11C3061D1B001A002D4FA9 /* TagState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3051D1B001A002D4FA9 /* TagState.swift */; };
@@ -34,6 +25,15 @@
 		CF11C30A1D1B006B002D4FA9 /* TagActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3091D1B006B002D4FA9 /* TagActionType.swift */; };
 		CF11C30C1D1B007A002D4FA9 /* SyncRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C30B1D1B007A002D4FA9 /* SyncRequirement.swift */; };
 		CF11C30E1D1B008D002D4FA9 /* TagViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C30D1D1B008D002D4FA9 /* TagViewData.swift */; };
+		CF11C3181D1B0959002D4FA9 /* dog-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C30F1D1B0959002D4FA9 /* dog-blue.png */; };
+		CF11C3191D1B0959002D4FA9 /* dog-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3101D1B0959002D4FA9 /* dog-blue@2x.png */; };
+		CF11C31A1D1B0959002D4FA9 /* dog-blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3111D1B0959002D4FA9 /* dog-blue@3x.png */; };
+		CF11C31B1D1B0959002D4FA9 /* dog-pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3121D1B0959002D4FA9 /* dog-pink.png */; };
+		CF11C31C1D1B0959002D4FA9 /* dog-pink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3131D1B0959002D4FA9 /* dog-pink@2x.png */; };
+		CF11C31D1D1B0959002D4FA9 /* dog-pink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3141D1B0959002D4FA9 /* dog-pink@3x.png */; };
+		CF11C31E1D1B0959002D4FA9 /* dog-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3151D1B0959002D4FA9 /* dog-yellow.png */; };
+		CF11C31F1D1B0959002D4FA9 /* dog-yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3161D1B0959002D4FA9 /* dog-yellow@2x.png */; };
+		CF11C3201D1B0959002D4FA9 /* dog-yellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C3171D1B0959002D4FA9 /* dog-yellow@3x.png */; };
 		CF3D077E1D12159400364EDA /* ViewModelBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D077D1D12159400364EDA /* ViewModelBinder.swift */; };
 		CF5C8C391D121A540094812D /* FakeDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C8C381D121A540094812D /* FakeDataTypes.swift */; };
 		CF77D33C1D1346A500C67E83 /* Arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77D33B1D1346A500C67E83 /* Arity.swift */; };
@@ -239,15 +239,6 @@
 		CF11C2D21D19A9CB002D4FA9 /* icon_x_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_x_delete@2x.png"; path = "Resources/icons/icon_x_delete@2x.png"; sourceTree = "<group>"; };
 		CF11C2D31D19A9CB002D4FA9 /* icon_x_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_x_delete@3x.png"; path = "Resources/icons/icon_x_delete@3x.png"; sourceTree = "<group>"; };
 		CF11C2DD1D19AC6E002D4FA9 /* dog.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dog.JPG; path = Resources/dog.JPG; sourceTree = "<group>"; };
-		CF11C2E21D19B02B002D4FA9 /* avatar_shorts_bazooka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_shorts_bazooka.png; path = Resources/avatars/avatar_shorts_bazooka.png; sourceTree = "<group>"; };
-		CF11C2E31D19B02B002D4FA9 /* avatar_shorts_bazooka@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_bazooka@2x.png"; path = "Resources/avatars/avatar_shorts_bazooka@2x.png"; sourceTree = "<group>"; };
-		CF11C2E41D19B02B002D4FA9 /* avatar_shorts_bazooka@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_bazooka@3x.png"; path = "Resources/avatars/avatar_shorts_bazooka@3x.png"; sourceTree = "<group>"; };
-		CF11C2E51D19B02B002D4FA9 /* avatar_shorts_johnnytsunami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_shorts_johnnytsunami.png; path = Resources/avatars/avatar_shorts_johnnytsunami.png; sourceTree = "<group>"; };
-		CF11C2E61D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_johnnytsunami@2x.png"; path = "Resources/avatars/avatar_shorts_johnnytsunami@2x.png"; sourceTree = "<group>"; };
-		CF11C2E71D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_johnnytsunami@3x.png"; path = "Resources/avatars/avatar_shorts_johnnytsunami@3x.png"; sourceTree = "<group>"; };
-		CF11C2E81D19B02B002D4FA9 /* avatar_shorts_surfandchill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_shorts_surfandchill.png; path = Resources/avatars/avatar_shorts_surfandchill.png; sourceTree = "<group>"; };
-		CF11C2E91D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_surfandchill@2x.png"; path = "Resources/avatars/avatar_shorts_surfandchill@2x.png"; sourceTree = "<group>"; };
-		CF11C2EA1D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_surfandchill@3x.png"; path = "Resources/avatars/avatar_shorts_surfandchill@3x.png"; sourceTree = "<group>"; };
 		CF11C3011D1AFFAD002D4FA9 /* TagViewLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagViewLocation.swift; path = Model/Enums/TagViewLocation.swift; sourceTree = "<group>"; };
 		CF11C3031D1AFFE1002D4FA9 /* TagVCMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagVCMode.swift; path = Model/Enums/TagVCMode.swift; sourceTree = "<group>"; };
 		CF11C3051D1B001A002D4FA9 /* TagState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagState.swift; path = Model/Enums/TagState.swift; sourceTree = "<group>"; };
@@ -255,6 +246,15 @@
 		CF11C3091D1B006B002D4FA9 /* TagActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagActionType.swift; path = Model/Enums/TagActionType.swift; sourceTree = "<group>"; };
 		CF11C30B1D1B007A002D4FA9 /* SyncRequirement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncRequirement.swift; path = Model/Enums/SyncRequirement.swift; sourceTree = "<group>"; };
 		CF11C30D1D1B008D002D4FA9 /* TagViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagViewData.swift; path = Model/Enums/TagViewData.swift; sourceTree = "<group>"; };
+		CF11C30F1D1B0959002D4FA9 /* dog-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-blue.png"; path = "Resources/avatars/dog-blue.png"; sourceTree = "<group>"; };
+		CF11C3101D1B0959002D4FA9 /* dog-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-blue@2x.png"; path = "Resources/avatars/dog-blue@2x.png"; sourceTree = "<group>"; };
+		CF11C3111D1B0959002D4FA9 /* dog-blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-blue@3x.png"; path = "Resources/avatars/dog-blue@3x.png"; sourceTree = "<group>"; };
+		CF11C3121D1B0959002D4FA9 /* dog-pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-pink.png"; path = "Resources/avatars/dog-pink.png"; sourceTree = "<group>"; };
+		CF11C3131D1B0959002D4FA9 /* dog-pink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-pink@2x.png"; path = "Resources/avatars/dog-pink@2x.png"; sourceTree = "<group>"; };
+		CF11C3141D1B0959002D4FA9 /* dog-pink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-pink@3x.png"; path = "Resources/avatars/dog-pink@3x.png"; sourceTree = "<group>"; };
+		CF11C3151D1B0959002D4FA9 /* dog-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-yellow.png"; path = "Resources/avatars/dog-yellow.png"; sourceTree = "<group>"; };
+		CF11C3161D1B0959002D4FA9 /* dog-yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-yellow@2x.png"; path = "Resources/avatars/dog-yellow@2x.png"; sourceTree = "<group>"; };
+		CF11C3171D1B0959002D4FA9 /* dog-yellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dog-yellow@3x.png"; path = "Resources/avatars/dog-yellow@3x.png"; sourceTree = "<group>"; };
 		CF3D077D1D12159400364EDA /* ViewModelBinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelBinder.swift; sourceTree = "<group>"; };
 		CF5C8C381D121A540094812D /* FakeDataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataTypes.swift; sourceTree = "<group>"; };
 		CF77D33B1D1346A500C67E83 /* Arity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arity.swift; sourceTree = "<group>"; };
@@ -362,15 +362,15 @@
 		CF11C2E11D19B01D002D4FA9 /* avatars */ = {
 			isa = PBXGroup;
 			children = (
-				CF11C2E21D19B02B002D4FA9 /* avatar_shorts_bazooka.png */,
-				CF11C2E31D19B02B002D4FA9 /* avatar_shorts_bazooka@2x.png */,
-				CF11C2E41D19B02B002D4FA9 /* avatar_shorts_bazooka@3x.png */,
-				CF11C2E51D19B02B002D4FA9 /* avatar_shorts_johnnytsunami.png */,
-				CF11C2E61D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@2x.png */,
-				CF11C2E71D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@3x.png */,
-				CF11C2E81D19B02B002D4FA9 /* avatar_shorts_surfandchill.png */,
-				CF11C2E91D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png */,
-				CF11C2EA1D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png */,
+				CF11C30F1D1B0959002D4FA9 /* dog-blue.png */,
+				CF11C3101D1B0959002D4FA9 /* dog-blue@2x.png */,
+				CF11C3111D1B0959002D4FA9 /* dog-blue@3x.png */,
+				CF11C3121D1B0959002D4FA9 /* dog-pink.png */,
+				CF11C3131D1B0959002D4FA9 /* dog-pink@2x.png */,
+				CF11C3141D1B0959002D4FA9 /* dog-pink@3x.png */,
+				CF11C3151D1B0959002D4FA9 /* dog-yellow.png */,
+				CF11C3161D1B0959002D4FA9 /* dog-yellow@2x.png */,
+				CF11C3171D1B0959002D4FA9 /* dog-yellow@3x.png */,
 			);
 			name = avatars;
 			sourceTree = "<group>";
@@ -776,28 +776,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF11C2EC1D19B02B002D4FA9 /* avatar_shorts_bazooka@2x.png in Resources */,
 				CF11C2D41D19A9CB002D4FA9 /* badge_heart_big.png in Resources */,
 				CF11C2DC1D19A9CB002D4FA9 /* icon_x_delete@3x.png in Resources */,
-				CF11C2EF1D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@2x.png in Resources */,
-				CF11C2F11D19B02B002D4FA9 /* avatar_shorts_surfandchill.png in Resources */,
-				CF11C2F21D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png in Resources */,
 				CF11C2D71D19A9CB002D4FA9 /* icon_tag_white.png in Resources */,
 				CFFE111D1D05DA220099F701 /* LaunchScreen.storyboard in Resources */,
-				CF11C2EB1D19B02B002D4FA9 /* avatar_shorts_bazooka.png in Resources */,
-				CF11C2F01D19B02B002D4FA9 /* avatar_shorts_johnnytsunami@3x.png in Resources */,
+				CF11C31B1D1B0959002D4FA9 /* dog-pink.png in Resources */,
+				CF11C31C1D1B0959002D4FA9 /* dog-pink@2x.png in Resources */,
 				CF11C2DB1D19A9CB002D4FA9 /* icon_x_delete@2x.png in Resources */,
-				CF11C2EE1D19B02B002D4FA9 /* avatar_shorts_johnnytsunami.png in Resources */,
 				CF11C2DA1D19A9CB002D4FA9 /* icon_x_delete.png in Resources */,
-				CF11C2ED1D19B02B002D4FA9 /* avatar_shorts_bazooka@3x.png in Resources */,
 				CF11C2DE1D19AC6E002D4FA9 /* dog.JPG in Resources */,
 				CF11C2D91D19A9CB002D4FA9 /* icon_tag_white@3x.png in Resources */,
+				CF11C31A1D1B0959002D4FA9 /* dog-blue@3x.png in Resources */,
 				CFFE111A1D05DA220099F701 /* Assets.xcassets in Resources */,
+				CF11C31E1D1B0959002D4FA9 /* dog-yellow.png in Resources */,
+				CF11C31F1D1B0959002D4FA9 /* dog-yellow@2x.png in Resources */,
 				CF11C2D61D19A9CB002D4FA9 /* badge_heart_big@3x.png in Resources */,
+				CF11C3181D1B0959002D4FA9 /* dog-blue.png in Resources */,
+				CF11C31D1D1B0959002D4FA9 /* dog-pink@3x.png in Resources */,
+				CF11C3191D1B0959002D4FA9 /* dog-blue@2x.png in Resources */,
+				CF11C3201D1B0959002D4FA9 /* dog-yellow@3x.png in Resources */,
 				CFFE11181D05DA220099F701 /* Main.storyboard in Resources */,
 				CF11C2D51D19A9CB002D4FA9 /* badge_heart_big@2x.png in Resources */,
 				CFFE11931D05E2CC0099F701 /* TagView.xib in Resources */,
-				CF11C2F31D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png in Resources */,
 				CF11C2D81D19A9CB002D4FA9 /* icon_tag_white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

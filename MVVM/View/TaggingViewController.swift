@@ -283,7 +283,7 @@ extension TaggingViewController {
   }
   
   private func displayTagFromServer(tag: PhotoTypes.Tag) {
-    let imgUrl = tag.createdBy == TagOwner.Own ? "avatar_shorts_johnnytsunami" : "avatar_shorts_surfandchill"
+    let imgUrl = tag.createdBy == TagOwner.Own ? "dog-pink" : "dog-yellow"
     let tagView = TagView(tagId: tag.tagId, userId: tag.createdBy, text: tag.text, location: tag.location, parentSize: getParentSize(), imgUrl: imgUrl, tagIntents: tagIntents)
     tagContainerView.addSubview(tagView)
     tagViewsDisplayed[tagView.viewId] = tagView
