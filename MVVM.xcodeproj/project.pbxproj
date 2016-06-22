@@ -27,6 +27,13 @@
 		CF11C2F11D19B02B002D4FA9 /* avatar_shorts_surfandchill.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E81D19B02B002D4FA9 /* avatar_shorts_surfandchill.png */; };
 		CF11C2F21D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2E91D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png */; };
 		CF11C2F31D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF11C2EA1D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png */; };
+		CF11C3021D1AFFAD002D4FA9 /* TagViewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3011D1AFFAD002D4FA9 /* TagViewLocation.swift */; };
+		CF11C3041D1AFFE1002D4FA9 /* TagVCMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3031D1AFFE1002D4FA9 /* TagVCMode.swift */; };
+		CF11C3061D1B001A002D4FA9 /* TagState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3051D1B001A002D4FA9 /* TagState.swift */; };
+		CF11C3081D1B005B002D4FA9 /* UserTagInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3071D1B005B002D4FA9 /* UserTagInfo.swift */; };
+		CF11C30A1D1B006B002D4FA9 /* TagActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C3091D1B006B002D4FA9 /* TagActionType.swift */; };
+		CF11C30C1D1B007A002D4FA9 /* SyncRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C30B1D1B007A002D4FA9 /* SyncRequirement.swift */; };
+		CF11C30E1D1B008D002D4FA9 /* TagViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11C30D1D1B008D002D4FA9 /* TagViewData.swift */; };
 		CF3D077E1D12159400364EDA /* ViewModelBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D077D1D12159400364EDA /* ViewModelBinder.swift */; };
 		CF5C8C391D121A540094812D /* FakeDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C8C381D121A540094812D /* FakeDataTypes.swift */; };
 		CF77D33C1D1346A500C67E83 /* Arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77D33B1D1346A500C67E83 /* Arity.swift */; };
@@ -241,6 +248,13 @@
 		CF11C2E81D19B02B002D4FA9 /* avatar_shorts_surfandchill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar_shorts_surfandchill.png; path = Resources/avatars/avatar_shorts_surfandchill.png; sourceTree = "<group>"; };
 		CF11C2E91D19B02B002D4FA9 /* avatar_shorts_surfandchill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_surfandchill@2x.png"; path = "Resources/avatars/avatar_shorts_surfandchill@2x.png"; sourceTree = "<group>"; };
 		CF11C2EA1D19B02B002D4FA9 /* avatar_shorts_surfandchill@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatar_shorts_surfandchill@3x.png"; path = "Resources/avatars/avatar_shorts_surfandchill@3x.png"; sourceTree = "<group>"; };
+		CF11C3011D1AFFAD002D4FA9 /* TagViewLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagViewLocation.swift; path = Model/Enums/TagViewLocation.swift; sourceTree = "<group>"; };
+		CF11C3031D1AFFE1002D4FA9 /* TagVCMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagVCMode.swift; path = Model/Enums/TagVCMode.swift; sourceTree = "<group>"; };
+		CF11C3051D1B001A002D4FA9 /* TagState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagState.swift; path = Model/Enums/TagState.swift; sourceTree = "<group>"; };
+		CF11C3071D1B005B002D4FA9 /* UserTagInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTagInfo.swift; path = Model/Enums/UserTagInfo.swift; sourceTree = "<group>"; };
+		CF11C3091D1B006B002D4FA9 /* TagActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagActionType.swift; path = Model/Enums/TagActionType.swift; sourceTree = "<group>"; };
+		CF11C30B1D1B007A002D4FA9 /* SyncRequirement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncRequirement.swift; path = Model/Enums/SyncRequirement.swift; sourceTree = "<group>"; };
+		CF11C30D1D1B008D002D4FA9 /* TagViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagViewData.swift; path = Model/Enums/TagViewData.swift; sourceTree = "<group>"; };
 		CF3D077D1D12159400364EDA /* ViewModelBinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelBinder.swift; sourceTree = "<group>"; };
 		CF5C8C381D121A540094812D /* FakeDataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataTypes.swift; sourceTree = "<group>"; };
 		CF77D33B1D1346A500C67E83 /* Arity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arity.swift; sourceTree = "<group>"; };
@@ -361,6 +375,20 @@
 			name = avatars;
 			sourceTree = "<group>";
 		};
+		CF11C3001D1AFF2D002D4FA9 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CF11C3011D1AFFAD002D4FA9 /* TagViewLocation.swift */,
+				CF11C3031D1AFFE1002D4FA9 /* TagVCMode.swift */,
+				CF11C3051D1B001A002D4FA9 /* TagState.swift */,
+				CF11C3071D1B005B002D4FA9 /* UserTagInfo.swift */,
+				CF11C3091D1B006B002D4FA9 /* TagActionType.swift */,
+				CF11C30B1D1B007A002D4FA9 /* SyncRequirement.swift */,
+				CF11C30D1D1B008D002D4FA9 /* TagViewData.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
 		CF77D3551D13798000C67E83 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +463,7 @@
 		CFFE11401D05DD1A0099F701 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CF11C3001D1AFF2D002D4FA9 /* Enums */,
 				CFFE11411D05DD760099F701 /* TagCreationHelper.swift */,
 				CFFE11421D05DD760099F701 /* TagIntents.swift */,
 				CFFE11431D05DD760099F701 /* TagModel.swift */,
@@ -918,20 +947,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFFE11481D05DD760099F701 /* TagIntents.swift in Sources */,
+				CF11C30E1D1B008D002D4FA9 /* TagViewData.swift in Sources */,
 				CFFE119B1D05E4310099F701 /* TagView.swift in Sources */,
 				CFFE114C1D05DD760099F701 /* TextChangedHelper.swift in Sources */,
+				CF11C3081D1B005B002D4FA9 /* UserTagInfo.swift in Sources */,
 				CFFE119C1D05E4310099F701 /* TaggingContactCell.swift in Sources */,
+				CF11C3041D1AFFE1002D4FA9 /* TagVCMode.swift in Sources */,
+				CF11C30C1D1B007A002D4FA9 /* SyncRequirement.swift in Sources */,
 				CFFE114A1D05DD760099F701 /* TagVCIntents.swift in Sources */,
 				CFFE114B1D05DD760099F701 /* TagViewModel.swift in Sources */,
 				CF5C8C391D121A540094812D /* FakeDataTypes.swift in Sources */,
 				CFFE11491D05DD760099F701 /* TagModel.swift in Sources */,
+				CF11C3021D1AFFAD002D4FA9 /* TagViewLocation.swift in Sources */,
 				CFFE119A1D05E4310099F701 /* TaggingViewController.swift in Sources */,
 				CF77D3521D1348E800C67E83 /* PassThroughView.swift in Sources */,
 				CFFE119E1D05E4310099F701 /* TagViewPanHelper.swift in Sources */,
 				CFFE11471D05DD760099F701 /* TagCreationHelper.swift in Sources */,
 				CF3D077E1D12159400364EDA /* ViewModelBinder.swift in Sources */,
+				CF11C30A1D1B006B002D4FA9 /* TagActionType.swift in Sources */,
 				CFFE11941D05E2CC0099F701 /* ViewController.swift in Sources */,
 				CF77D3541D1349A700C67E83 /* Driver+Extras.swift in Sources */,
+				CF11C3061D1B001A002D4FA9 /* TagState.swift in Sources */,
 				CFFE119D1D05E4310099F701 /* TaggingTableViewController.swift in Sources */,
 				CFFE11131D05DA220099F701 /* AppDelegate.swift in Sources */,
 				CF77D33C1D1346A500C67E83 /* Arity.swift in Sources */,
