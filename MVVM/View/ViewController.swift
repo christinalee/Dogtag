@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         case .Ended:
           self.tagCreationEnded()
         }
-      }).addDisposableTo(rx_disposeBag)
+      })//.addDisposableTo(rx_disposeBag)
       
       vc.view.translatesAutoresizingMaskIntoConstraints = true
       vc.view.frame = view.bounds

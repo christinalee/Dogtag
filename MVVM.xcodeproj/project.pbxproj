@@ -51,8 +51,6 @@
 		CFFE114A1D05DD760099F701 /* TagVCIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE11441D05DD760099F701 /* TagVCIntents.swift */; };
 		CFFE114B1D05DD760099F701 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE11451D05DD760099F701 /* TagViewModel.swift */; };
 		CFFE114C1D05DD760099F701 /* TextChangedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE11461D05DD760099F701 /* TextChangedHelper.swift */; };
-		CFFE118C1D05E0B40099F701 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFE11651D05E0740099F701 /* RxSwift.framework */; };
-		CFFE118D1D05E0BD0099F701 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFE116D1D05E0740099F701 /* RxCocoa.framework */; };
 		CFFE11931D05E2CC0099F701 /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFE11911D05E2CC0099F701 /* TagView.xib */; };
 		CFFE11941D05E2CC0099F701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE11921D05E2CC0099F701 /* ViewController.swift */; };
 		CFFE119A1D05E4310099F701 /* TaggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE11951D05E4310099F701 /* TaggingViewController.swift */; };
@@ -78,146 +76,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = CFFE110E1D05DA220099F701;
 			remoteInfo = MVVM;
-		};
-		CFFE11641D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8A56AD71AD7424700B4673B;
-			remoteInfo = "RxSwift-iOS";
-		};
-		CFFE11661D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C88BB8711B07E5ED0064D411;
-			remoteInfo = "RxSwift-OSX";
-		};
-		CFFE11681D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2EA280C1BB9B5A200880ED3;
-			remoteInfo = "RxSwift-tvOS";
-		};
-		CFFE116A1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8F0C0021BBBFB8B001B112F;
-			remoteInfo = "RxSwift-watchOS";
-		};
-		CFFE116C1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C809396D1B8A71760088E94D;
-			remoteInfo = "RxCocoa-iOS";
-		};
-		CFFE116E1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C80939E71B8A71840088E94D;
-			remoteInfo = "RxCocoa-OSX";
-		};
-		CFFE11701D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2138C751BB9BE9800339B5C;
-			remoteInfo = "RxCocoa-tvOS";
-		};
-		CFFE11721D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8F0C04B1BBBFBB9001B112F;
-			remoteInfo = "RxCocoa-watchOS";
-		};
-		CFFE11741D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8093BC71B8A71F00088E94D;
-			remoteInfo = "RxBlocking-iOS";
-		};
-		CFFE11761D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8093C451B8A71FC0088E94D;
-			remoteInfo = "RxBlocking-OSX";
-		};
-		CFFE11781D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2EBEB811BB9B99D003A27DC;
-			remoteInfo = "RxBlocking-tvOS";
-		};
-		CFFE117A1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C8F0C0581BBBFBCE001B112F;
-			remoteInfo = "RxBlocking-watchOS";
-		};
-		CFFE117C1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C88FA50C1C25C44800CCFEA4;
-			remoteInfo = "RxTests-iOS";
-		};
-		CFFE117E1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C88FA51D1C25C4B500CCFEA4;
-			remoteInfo = "RxTests-OSX";
-		};
-		CFFE11801D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C88FA52E1C25C4C000CCFEA4;
-			remoteInfo = "RxTests-tvOS";
-		};
-		CFFE11821D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C88FA53F1C25C4CC00CCFEA4;
-			remoteInfo = "RxTests-watchOS";
-		};
-		CFFE11841D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C83508C31C386F6F0027C24C;
-			remoteInfo = "AllTests-iOS";
-		};
-		CFFE11861D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C83509841C38740E0027C24C;
-			remoteInfo = "AllTests-tvOS";
-		};
-		CFFE11881D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C83509941C38742C0027C24C;
-			remoteInfo = "AllTests-OSX";
-		};
-		CFFE118A1D05E0740099F701 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C85BA04B1C3878740075D68E;
-			remoteInfo = PerformanceTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -278,7 +136,6 @@
 		CFFE11441D05DD760099F701 /* TagVCIntents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagVCIntents.swift; path = Model/TagVCIntents.swift; sourceTree = "<group>"; };
 		CFFE11451D05DD760099F701 /* TagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagViewModel.swift; path = Model/TagViewModel.swift; sourceTree = "<group>"; };
 		CFFE11461D05DD760099F701 /* TextChangedHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextChangedHelper.swift; path = Model/TextChangedHelper.swift; sourceTree = "<group>"; };
-		CFFE114D1D05E0740099F701 /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		CFFE11911D05E2CC0099F701 /* TagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TagView.xib; path = View/TagView.xib; sourceTree = "<group>"; };
 		CFFE11921D05E2CC0099F701 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
 		CFFE11951D05E4310099F701 /* TaggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaggingViewController.swift; path = View/TaggingViewController.swift; sourceTree = "<group>"; };
@@ -295,8 +152,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFFE118D1D05E0BD0099F701 /* RxCocoa.framework in Frameworks */,
-				CFFE118C1D05E0B40099F701 /* RxSwift.framework in Frameworks */,
 				EE752DA17C0487CFAE4BD8C5 /* Pods_MVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +257,6 @@
 		CFFE11061D05DA210099F701 = {
 			isa = PBXGroup;
 			children = (
-				CFFE114D1D05E0740099F701 /* Rx.xcodeproj */,
 				CFFE11111D05DA220099F701 /* MVVM */,
 				CFFE11261D05DA220099F701 /* MVVMTests */,
 				CFFE11311D05DA220099F701 /* MVVMUITests */,
@@ -472,33 +326,6 @@
 				CFFE11461D05DD760099F701 /* TextChangedHelper.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		CFFE114E1D05E0740099F701 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CFFE11651D05E0740099F701 /* RxSwift.framework */,
-				CFFE11671D05E0740099F701 /* RxSwift.framework */,
-				CFFE11691D05E0740099F701 /* RxSwift.framework */,
-				CFFE116B1D05E0740099F701 /* RxSwift.framework */,
-				CFFE116D1D05E0740099F701 /* RxCocoa.framework */,
-				CFFE116F1D05E0740099F701 /* RxCocoa.framework */,
-				CFFE11711D05E0740099F701 /* RxCocoa.framework */,
-				CFFE11731D05E0740099F701 /* RxCocoa.framework */,
-				CFFE11751D05E0740099F701 /* RxBlocking.framework */,
-				CFFE11771D05E0740099F701 /* RxBlocking.framework */,
-				CFFE11791D05E0740099F701 /* RxBlocking.framework */,
-				CFFE117B1D05E0740099F701 /* RxBlocking.framework */,
-				CFFE117D1D05E0740099F701 /* RxTests.framework */,
-				CFFE117F1D05E0740099F701 /* RxTests.framework */,
-				CFFE11811D05E0740099F701 /* RxTests.framework */,
-				CFFE11831D05E0740099F701 /* RxTests.framework */,
-				CFFE11851D05E0740099F701 /* AllTests-iOS.xctest */,
-				CFFE11871D05E0740099F701 /* AllTests-tvOS.xctest */,
-				CFFE11891D05E0740099F701 /* AllTests-OSX.xctest */,
-				CFFE118B1D05E0740099F701 /* PerformanceTests.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CFFE11901D05E2830099F701 /* View */ = {
@@ -613,12 +440,6 @@
 			mainGroup = CFFE11061D05DA210099F701;
 			productRefGroup = CFFE11101D05DA220099F701 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CFFE114E1D05E0740099F701 /* Products */;
-					ProjectRef = CFFE114D1D05E0740099F701 /* Rx.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CFFE110E1D05DA220099F701 /* MVVM */,
@@ -627,149 +448,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CFFE11651D05E0740099F701 /* RxSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxSwift.framework;
-			remoteRef = CFFE11641D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11671D05E0740099F701 /* RxSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxSwift.framework;
-			remoteRef = CFFE11661D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11691D05E0740099F701 /* RxSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxSwift.framework;
-			remoteRef = CFFE11681D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE116B1D05E0740099F701 /* RxSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxSwift.framework;
-			remoteRef = CFFE116A1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE116D1D05E0740099F701 /* RxCocoa.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxCocoa.framework;
-			remoteRef = CFFE116C1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE116F1D05E0740099F701 /* RxCocoa.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxCocoa.framework;
-			remoteRef = CFFE116E1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11711D05E0740099F701 /* RxCocoa.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxCocoa.framework;
-			remoteRef = CFFE11701D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11731D05E0740099F701 /* RxCocoa.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxCocoa.framework;
-			remoteRef = CFFE11721D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11751D05E0740099F701 /* RxBlocking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxBlocking.framework;
-			remoteRef = CFFE11741D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11771D05E0740099F701 /* RxBlocking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxBlocking.framework;
-			remoteRef = CFFE11761D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11791D05E0740099F701 /* RxBlocking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxBlocking.framework;
-			remoteRef = CFFE11781D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE117B1D05E0740099F701 /* RxBlocking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxBlocking.framework;
-			remoteRef = CFFE117A1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE117D1D05E0740099F701 /* RxTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxTests.framework;
-			remoteRef = CFFE117C1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE117F1D05E0740099F701 /* RxTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxTests.framework;
-			remoteRef = CFFE117E1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11811D05E0740099F701 /* RxTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxTests.framework;
-			remoteRef = CFFE11801D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11831D05E0740099F701 /* RxTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RxTests.framework;
-			remoteRef = CFFE11821D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11851D05E0740099F701 /* AllTests-iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AllTests-iOS.xctest";
-			remoteRef = CFFE11841D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11871D05E0740099F701 /* AllTests-tvOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AllTests-tvOS.xctest";
-			remoteRef = CFFE11861D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE11891D05E0740099F701 /* AllTests-OSX.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AllTests-OSX.xctest";
-			remoteRef = CFFE11881D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFFE118B1D05E0740099F701 /* PerformanceTests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = PerformanceTests.app;
-			remoteRef = CFFE118A1D05E0740099F701 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CFFE110D1D05DA220099F701 /* Resources */ = {

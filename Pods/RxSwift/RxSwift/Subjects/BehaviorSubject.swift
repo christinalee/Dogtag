@@ -3,7 +3,7 @@
 //  RxSwift
 //
 //  Created by Krunoslav Zaher on 5/23/15.
-//  Copyright (c) 2015 Krunoslav Zaher. All rights reserved.
+//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
 import Foundation
@@ -21,6 +21,14 @@ public final class BehaviorSubject<Element>
     , Disposable {
     public typealias SubjectObserverType = BehaviorSubject<Element>
     typealias DisposeKey = Bag<AnyObserver<Element>>.KeyType
+    
+    /**
+     Indicates whether the subject has any observers
+     */
+    public var hasObservers: Bool {
+        _lock.lock(); defer { _lock.unlock() }
+        return _observers.count > 0
+    }
     
     let _lock = NSRecursiveLock()
     

@@ -1,15 +1,20 @@
 PODS:
-  - NSObject+Rx (1.1.0):
-    - RxSwift (~> 2.0.0-beta)
-  - RxSwift (2.0.0-beta.4)
+  - RxBlocking (2.6.0):
+    - RxSwift (~> 2.5)
+  - RxCocoa (2.6.0):
+    - RxSwift (~> 2.5)
+  - RxSwift (2.6.0)
 
 DEPENDENCIES:
-  - NSObject+Rx
+  - RxBlocking (~> 2.0)
+  - RxCocoa (~> 2.0)
+  - RxSwift (~> 2.0)
 
 SPEC CHECKSUMS:
-  NSObject+Rx: 3704f64fad3a476a5212402d500e2ce4133adb69
-  RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
+  RxBlocking: f2e0a7e74d5e9d3029d2b1118e2af01f583fbdd8
+  RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
+  RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
 
-PODFILE CHECKSUM: a84c145f44c50088af0442fc7d2a55ae50bf87bf
+PODFILE CHECKSUM: 45627576d4de3b9758f9bf938c002aa5cb93536f
 
 COCOAPODS: 1.0.1

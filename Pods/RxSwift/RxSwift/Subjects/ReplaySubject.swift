@@ -3,7 +3,7 @@
 //  RxSwift
 //
 //  Created by Krunoslav Zaher on 4/14/15.
-//  Copyright (c) 2015 Krunoslav Zaher. All rights reserved.
+//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,21 @@ public class ReplaySubject<Element>
     , ObserverType
     , Disposable {
     public typealias SubjectObserverType = ReplaySubject<Element>
+    
+    /**
+     Indicates whether the subject has any observers
+     */
+    public var hasObservers: Bool {
+        _lock.lock(); defer { _lock.unlock() }
+        return _observers.count > 0
+    }
+    
+    private var _lock = NSRecursiveLock()
+    
+    // state
+    private var _disposed = false
+    private var _stoppedEvent = nil as Event<Element>?
+    private var _observers = Bag<AnyObserver<Element>>()
     
     typealias DisposeKey = Bag<AnyObserver<Element>>.KeyType
     
@@ -62,27 +77,20 @@ public class ReplaySubject<Element>
             return ReplayMany(bufferSize: bufferSize)
         }
     }
-	
-	/**
-	Creates a new instance of `ReplaySubject` that buffers all the elements of a sequence.
-	To avoid filling up memory, developer needs to make sure that the use case will only ever store a 'reasonable'
-	number of elements.
-	*/
-	public static func createUnbounded() -> ReplaySubject<Element> {
-		return ReplayAll()
-	}
+
+    /**
+    Creates a new instance of `ReplaySubject` that buffers all the elements of a sequence.
+    To avoid filling up memory, developer needs to make sure that the use case will only ever store a 'reasonable'
+    number of elements.
+    */
+    public static func createUnbounded() -> ReplaySubject<Element> {
+        return ReplayAll()
+    }
 }
 
 class ReplayBufferBase<Element>
     : ReplaySubject<Element>
     , SynchronizedUnsubscribeType {
-    
-    private var _lock = NSRecursiveLock()
-
-    // state
-    private var _disposed = false
-    private var _stoppedEvent = nil as Event<Element>?
-    private var _observers = Bag<AnyObserver<Element>>()
     
     func trim() {
         abstractMethod()

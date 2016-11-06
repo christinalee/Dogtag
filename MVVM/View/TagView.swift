@@ -230,7 +230,7 @@ public class TagView: UIView {
       return (curr.1, tagState)
     }).subscribeNext { (oldAndNewTagStates) in
       self.handleStateChange(oldAndNewTagStates.0, newState: oldAndNewTagStates.1)
-      }.addDisposableTo(rx_disposeBag)
+      }//.addDisposableTo(rx_disposeBag)
     
     //label shadow
     labelContainerView.layer.cornerRadius = 6

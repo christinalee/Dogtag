@@ -3,7 +3,7 @@
 //  Rx
 //
 //  Created by Krunoslav Zaher on 4/4/15.
-//  Copyright (c) 2015 Krunoslav Zaher. All rights reserved.
+//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
 import Foundation
@@ -49,9 +49,7 @@ public class OperationQueueScheduler: ImmediateSchedulerType {
 
         self.operationQueue.addOperation(operation)
         
-        compositeDisposable.addDisposable(AnonymousDisposable {
-            operation.cancel()
-        })
+        compositeDisposable.addDisposable(AnonymousDisposable(operation.cancel))
 
         return compositeDisposable
     }

@@ -3,22 +3,17 @@
 //  Rx
 //
 //  Created by Krunoslav Zaher on 2/14/15.
-//  Copyright (c) 2015 Krunoslav Zaher. All rights reserved.
+//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
 import Foundation
 
 #if TRACE_RESOURCES
-/**
-Counts internal Rx resources (Observables, Observers, Disposables ...).
-
-It provides a really simple way to detect leaks early during development.
-*/
-public var resourceCount: Int32 = 0
+/// Counts internal Rx resource allocations (Observables, Observers, Disposables, etc.). This provides a simple way to detect leaks during development.
+public var resourceCount: AtomicInt = 0
 #endif
 
-// Swift doesn't have a concept of abstract metods.
-// This function is being used as a runtime check that abstract methods aren't being called.
+/// Swift does not implement abstract methods. This method is used as a runtime check to ensure that methods which intended to be abstract (i.e., they should be implemented in subclasses) are not called directly on the superclass.
 @noreturn func abstractMethod() -> Void {
     rxFatalError("Abstract method")
 }
@@ -44,13 +39,4 @@ func decrementChecked(inout i: Int) throws -> Int {
     let result = i
     i -= 1
     return result
-}
-
-extension NSObject {
-    func rx_synchronized<T>(@noescape action: () -> T) -> T {
-        objc_sync_enter(self)
-        let result = action()
-        objc_sync_exit(self)
-        return result
-    }
 }
