@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NSObject+Rx.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MVVM.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -15,11 +20,6 @@
 			<false/>
 		</dict>
 		<key>Pods-MVVMUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RxBlocking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1C4E5CD74DF2446B1E21BC62B86EA63F</key>
+		<key>1AC8241078D064BE382DB1DD864A5819</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5737745F729F719659D57B1506257D5D</key>
+		<key>71153A00F615C56DB869159216E2A738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69C842C707FD9C081E5D5767300EBA04</key>
+		<key>88FD317D77B65291B5AE152DFDDEF4BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92608434BC72C2614BE120FBD260F99C</key>
+		<key>A1B37947A264DD2A8B6C212E31421E41</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3022DF20DEE3D0484297AD08F035231</key>
+		<key>C7EC37247077041FDAD1F4FEB9536DFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5EC060D29683C6288C391C496D38D9E</key>
+		<key>EB91F3DC2B31E26E6C62602A9A6732D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

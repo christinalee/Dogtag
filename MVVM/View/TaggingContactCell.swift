@@ -10,28 +10,28 @@ import Foundation
 import UIKit
 
 protocol TaggingContactCellModelDelegate: class {
-  func selectedCell(model: TaggingContactCellModel)
+  func selectedCell(_ model: TaggingContactCellModel)
 }
 
-public class GenericCellViewModel {
-  lazy public var keywordWords: [String] = {
+open class GenericCellViewModel {
+  lazy open var keywordWords: [String] = {
     return self.keywords().characters.split {$0 == " "}.map { String($0) }
   }()
   
   func keywords() -> String{
     if let title = self.title {
-      return title.lowercaseString
+      return title.lowercased()
     }
     return ""
     
   }
   
-  public var isDisabled = false
-  public var isSelected = false
+  open var isDisabled = false
+  open var isSelected = false
   
-  public var id: String?
-  public var title: String?
-  public var subtitle: String?
+  open var id: String?
+  open var title: String?
+  open var subtitle: String?
 }
 
 class ContactCellModel: GenericCellViewModel {
@@ -59,7 +59,7 @@ class ContactCellModel: GenericCellViewModel {
 class TaggingContactCellModel: ContactCellModel {
   override func keywords() -> String {
     if let matchedContact = matchedContact {
-      return matchedContact.username.lowercaseString + " " + matchedContact.name.lowercaseString
+      return matchedContact.username.lowercased() + " " + matchedContact.name.lowercased()
     }
     return ""
   }
@@ -72,7 +72,7 @@ class TaggingContactCellModel: ContactCellModel {
   
 }
 
-public class GenericTableViewCell: UITableViewCell {
+open class GenericTableViewCell: UITableViewCell {
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var subtitleLabel: UILabel!
   
@@ -86,7 +86,7 @@ public class GenericTableViewCell: UITableViewCell {
   
   func viewModelChanged() {
     if let viewModel = viewModel {
-      selectionStyle = .None
+      selectionStyle = .none
       titleLabel.text = viewModel.title
       subtitleLabel.text = viewModel.subtitle
     }
@@ -100,21 +100,21 @@ public class GenericTableViewCell: UITableViewCell {
 class ContactCell: GenericTableViewCell {
   @IBOutlet var imageButton: UIButton!
   
-  private func updateImageButton() {
+  fileprivate func updateImageButton() {
     imageButton.layer.cornerRadius = 28.0
     imageButton.layer.masksToBounds = true
-    imageButton.contentHorizontalAlignment = .Fill
-    imageButton.contentVerticalAlignment = .Fill
+    imageButton.contentHorizontalAlignment = .fill
+    imageButton.contentVerticalAlignment = .fill
     if let viewModel = viewModel as? ContactCellModel {
       if let imageName = viewModel.imageName {
         if imageName != "" {
-          imageButton.setImage(UIImage(named: imageName), forState: .Normal)
-          imageButton.setBackgroundImage(nil, forState: .Normal)
+          imageButton.setImage(UIImage(named: imageName), for: UIControlState())
+          imageButton.setBackgroundImage(nil, for: UIControlState())
           return
         }
       }
       else if let imageUrl = viewModel.imageUrl {
-        if let url = NSURL(string: imageUrl) {
+        if let url = URL(string: imageUrl) {
           //todo: set image
           //          imageButton.yr_setImageWithUrl(url, forState: .Normal)
           //          imageButton.setBackgroundImage(nil, forState: .Normal)
@@ -123,7 +123,7 @@ class ContactCell: GenericTableViewCell {
       }
     }
     
-    imageButton.setImage(nil, forState: .Normal)
+    imageButton.setImage(nil, for: UIControlState())
   }
 }
 

@@ -15,8 +15,8 @@ public struct TagOwner {
   public static let OtherPerson: String = "otherPerson123"
 }
 
-public class ContactModel: NSObject {
-  public class MatchedContact {
+open class ContactModel: NSObject {
+  open class MatchedContact {
     var name: String
     var photoUrl: String 
     var userId: String
@@ -31,8 +31,8 @@ public class ContactModel: NSObject {
   }
 }
 
-public class PhotoTypes: NSObject {
-  public class Tag {
+open class PhotoTypes: NSObject {
+  open class Tag {
     var tagId: String
     var location: CGPoint
     var text: NSAttributedString

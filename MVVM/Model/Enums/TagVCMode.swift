@@ -9,55 +9,55 @@
 import Foundation
 
 public enum TagVCMode {
-  case Tagging(text: String, location: TagViewLocation?)
-  case TaggingAndMentioning(text: String, searchQuery: String, location: TagViewLocation?)
-  case DeletingTag
-  case None
+  case tagging(text: String, location: TagViewLocation?)
+  case taggingAndMentioning(text: String, searchQuery: String, location: TagViewLocation?)
+  case deletingTag
+  case none
   
-  func shallowEquals(otherMode: TagVCMode) -> Bool {
+  func shallowEquals(_ otherMode: TagVCMode) -> Bool {
     switch(self, otherMode) {
-    case (.Tagging(_, _), .Tagging(_, _)),
-         (.TaggingAndMentioning(_, _, _), .TaggingAndMentioning(_, _, _)),
-         (.DeletingTag, .DeletingTag),
-         (.None, .None):
+    case (.tagging(_, _), .tagging(_, _)),
+         (.taggingAndMentioning(_, _, _), .taggingAndMentioning(_, _, _)),
+         (.deletingTag, .deletingTag),
+         (.none, .none):
       return true
-    case (.Tagging(_, _), _),
-         (.TaggingAndMentioning(_, _, _), _),
-         (.DeletingTag, _),
-         (.None, _):
+    case (.tagging(_, _), _),
+         (.taggingAndMentioning(_, _, _), _),
+         (.deletingTag, _),
+         (.none, _):
       return false
     }
   }
   
-  func deepEquals(otherMode: TagVCMode) -> Bool {
+  func deepEquals(_ otherMode: TagVCMode) -> Bool {
     switch(self, otherMode) {
-    case (.Tagging(let text1, let location1), .Tagging(let text2, let location2)):
+    case (.tagging(let text1, let location1), .tagging(let text2, let location2)):
       switch(location1, location2){
-      case (.Some(let sLocation1), .Some(let sLocation2)):
+      case (.some(let sLocation1), .some(let sLocation2)):
         return text1 == text2 && sLocation1.deepEquals(sLocation2)
-      case (.None, .None):
+      case (.none, .none):
         return true
-      case (.Some(_), _),
-           (.None, _):
+      case (.some(_), _),
+           (.none, _):
         return false
       }
-    case (.TaggingAndMentioning(let text1, let searchString1, let location1), .TaggingAndMentioning(let text2, let searchString2, let location2)):
+    case (.taggingAndMentioning(let text1, let searchString1, let location1), .taggingAndMentioning(let text2, let searchString2, let location2)):
       switch(location1, location2){
-      case (.Some(let sLocation1), .Some(let sLocation2)):
+      case (.some(let sLocation1), .some(let sLocation2)):
         return text1 == text2 && searchString1 == searchString2 && sLocation1.deepEquals(sLocation2)
-      case (.None, .None):
+      case (.none, .none):
         return true
-      case (.Some(_), _),
-           (.None, _):
+      case (.some(_), _),
+           (.none, _):
         return false
       }
-    case (.DeletingTag, .DeletingTag),
-         (.None, .None):
+    case (.deletingTag, .deletingTag),
+         (.none, .none):
       return true
-    case (.Tagging(_, _), _),
-         (.TaggingAndMentioning(_, _, _), _),
-         (.DeletingTag, _),
-         (.None, _):
+    case (.tagging(_, _), _),
+         (.taggingAndMentioning(_, _, _), _),
+         (.deletingTag, _),
+         (.none, _):
       return false
     }
   }

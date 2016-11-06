@@ -23,7 +23,7 @@ public struct TagIntents {
 struct TagIntentsHelper {
   typealias State = ConcreteTagModel.State
   
-  static func reduce(intents: TagIntents) -> Observable<(State) -> State>{
+  static func reduce(_ intents: TagIntents) -> Observable<(State) -> State>{
     let tagMoved = intents.tagMoved.map { (tagId, location) in
       TagIntentsHelper.tagMovedReducer(tagId, tagLocation: location)
     }
@@ -63,16 +63,16 @@ struct TagIntentsHelper {
     ).merge()
   }
   
-  static func tagFinishedCreatingReducer(tagId: String) -> (State) -> State {
+  static func tagFinishedCreatingReducer(_ tagId: String) -> (State) -> State {
     return { state in
       if let tagViewData = state.tags[tagId] {
         var newTags = state.tags
         
         switch(tagViewData){
-        case .ServerTag(let tagInfo, _, let syncRequirement):
-          newTags[tagInfo.tagId] = TagViewData.ServerTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
-        case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-          newTags[tagInfo.id] = TagViewData.UserCreatedTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
+        case .serverTag(let tagInfo, _, let syncRequirement):
+          newTags[tagInfo.tagId] = TagViewData.serverTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
+        case .userCreatedTag(let tagInfo, _, let syncRequirement):
+          newTags[tagInfo.id] = TagViewData.userCreatedTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
         }
         
         return State(mode: state.mode, photoId: state.photoId, tags: newTags)
@@ -82,7 +82,7 @@ struct TagIntentsHelper {
     }
   }
   
-  static func tagMovedReducer(tagId: String, tagLocation: CGPoint?) -> (State) -> State {
+  static func tagMovedReducer(_ tagId: String, tagLocation: CGPoint?) -> (State) -> State {
     return { state in
       
       if let tag = state.tags[tagId] {
@@ -93,17 +93,17 @@ struct TagIntentsHelper {
           newDict[tagId] = updatedTag
           
           switch(tag){
-          case .ServerTag(let tagInfo, _, let syncRequirement):
-            newDict[tag.id] = .ServerTag(tagInfo: tagInfo, state: .Panning(locationInView: location), syncRequirement: syncRequirement.requireUpdate(.Move))
-          case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-            newDict[tag.id] = .UserCreatedTag(tagInfo: tagInfo, state: .Panning(locationInView: location), syncRequirement: syncRequirement.requireUpdate(.Move))
+          case .serverTag(let tagInfo, _, let syncRequirement):
+            newDict[tag.id] = .serverTag(tagInfo: tagInfo, state: .panning(locationInView: location), syncRequirement: syncRequirement.requireUpdate(.Move))
+          case .userCreatedTag(let tagInfo, _, let syncRequirement):
+            newDict[tag.id] = .userCreatedTag(tagInfo: tagInfo, state: .panning(locationInView: location), syncRequirement: syncRequirement.requireUpdate(.Move))
           }  
         } else { //pan ended
           switch(tag){
-          case .ServerTag(let tagInfo, _, let syncRequirement):
-            newDict[tag.id] = .ServerTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
-          case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-            newDict[tag.id] = .UserCreatedTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
+          case .serverTag(let tagInfo, _, let syncRequirement):
+            newDict[tag.id] = .serverTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
+          case .userCreatedTag(let tagInfo, _, let syncRequirement):
+            newDict[tag.id] = .userCreatedTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
           }
         }
         
@@ -114,18 +114,18 @@ struct TagIntentsHelper {
     }
   }
   
-  static func tagDeleteButtonTappedReducer(tagId: String) -> (State) -> State {
+  static func tagDeleteButtonTappedReducer(_ tagId: String) -> (State) -> State {
     return { state in
       if let tag = state.tags[tagId] {
         var newDict = state.tags
         
         switch(tag){
-        case .ServerTag(let tagInfo, _, let syncRequirement):
+        case .serverTag(let tagInfo, _, let syncRequirement):
           let updatedSyncReq = syncRequirement.requireUpdate(.Delete)
-          newDict[tagId] = .ServerTag(tagInfo: tagInfo, state: .Deleted, syncRequirement: updatedSyncReq)
-        case .UserCreatedTag(let tagInfo, _, let syncRequirement):
+          newDict[tagId] = .serverTag(tagInfo: tagInfo, state: .deleted, syncRequirement: updatedSyncReq)
+        case .userCreatedTag(let tagInfo, _, let syncRequirement):
           let updatedSyncReq = syncRequirement.requireUpdate(.Delete)
-          newDict[tagId] = .UserCreatedTag(tagInfo: tagInfo, state: .Deleted, syncRequirement: updatedSyncReq)
+          newDict[tagId] = .userCreatedTag(tagInfo: tagInfo, state: .deleted, syncRequirement: updatedSyncReq)
         }
         return State(mode: state.mode, photoId: state.photoId, tags: newDict)
       }
@@ -134,21 +134,21 @@ struct TagIntentsHelper {
     }
   }
   
-  static func tagEnteredDeleteModeReducer(tagId: String) -> (State) -> State  {
+  static func tagEnteredDeleteModeReducer(_ tagId: String) -> (State) -> State  {
     return { state in
       
       if let tagData = state.tags[tagId] {
         switch(state.mode){
-        case .None, .DeletingTag:
+        case .none, .deletingTag:
           var newDict = state.tags
           switch(tagData){
-          case .ServerTag(let tag, _, let syncRequirement):
-            newDict[tagData.id] = TagViewData.ServerTag(tagInfo: tag, state: .DeleteMode, syncRequirement: syncRequirement)
-          case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-            newDict[tagData.id] = TagViewData.UserCreatedTag(tagInfo: tagInfo, state: .DeleteMode, syncRequirement: syncRequirement)
+          case .serverTag(let tag, _, let syncRequirement):
+            newDict[tagData.id] = TagViewData.serverTag(tagInfo: tag, state: .deleteMode, syncRequirement: syncRequirement)
+          case .userCreatedTag(let tagInfo, _, let syncRequirement):
+            newDict[tagData.id] = TagViewData.userCreatedTag(tagInfo: tagInfo, state: .deleteMode, syncRequirement: syncRequirement)
           }
-          return State(mode: .DeletingTag, photoId: state.photoId, tags: newDict)
-        case .Tagging(_, _), .TaggingAndMentioning(_, _, _):
+          return State(mode: .deletingTag, photoId: state.photoId, tags: newDict)
+        case .tagging(_, _), .taggingAndMentioning(_, _, _):
           //This shouldn't happen
           fatalError("Tag model going from \(state.mode) to .DeletingTag")
         }
@@ -158,23 +158,23 @@ struct TagIntentsHelper {
     }
   }
   
-  static func tagExitedDeleteModeReducer(tagId: String) -> (State) -> State {
+  static func tagExitedDeleteModeReducer(_ tagId: String) -> (State) -> State {
    return { state in
       switch(state.mode){
-      case .DeletingTag:
+      case .deletingTag:
         let tagsInDeleteMode: Int = state.tags.filter({ (_, tagData) -> Bool in
-          tagData.state.shallowEquals(TagState.DeleteMode)
+          tagData.state.shallowEquals(TagState.deleteMode)
         }).count
-        let newMode: TagVCMode = tagsInDeleteMode == 0 ? .None : .DeletingTag
+        let newMode: TagVCMode = tagsInDeleteMode == 0 ? .none : .deletingTag
         return State(mode: newMode, photoId: state.photoId, tags: state.tags)
-      case .None, .Tagging(_, _), .TaggingAndMentioning(_, _, _):
+      case .none, .tagging(_, _), .taggingAndMentioning(_, _, _):
         //This shouldn't happen
         fatalError("Freak out, tag model going from \(state.mode) to .None")
       }
     }
   }
   
-  static func tagIconTappedReducer(tagId: String, userid: String) -> (State) -> State  {
+  static func tagIconTappedReducer(_ tagId: String, userid: String) -> (State) -> State  {
    print("tag \(tagId) icon tapped")
     return { state in
       if userid == TagOwner.Own {
@@ -187,25 +187,25 @@ struct TagIntentsHelper {
     }
   }
   
-  static func tagTappedReducer(tagIdAndState: (String, TagState)) -> (State) -> State  {
+  static func tagTappedReducer(_ tagIdAndState: (String, TagState)) -> (State) -> State  {
     return { state in 
       if let tag = state.tags[tagIdAndState.0] {
         var newDict = state.tags
         
         switch(tag){
-        case .ServerTag(let tagInfo, _, let syncRequirement):
+        case .serverTag(let tagInfo, _, let syncRequirement):
           var updatedSyncReq = syncRequirement
-          if case .Liked(_) = tagIdAndState.1 {
+          if case .liked(_) = tagIdAndState.1 {
             updatedSyncReq = syncRequirement.addLike()
           }
-          newDict[tag.id] = .ServerTag(tagInfo: tagInfo, state: tagIdAndState.1, syncRequirement: updatedSyncReq)
+          newDict[tag.id] = .serverTag(tagInfo: tagInfo, state: tagIdAndState.1, syncRequirement: updatedSyncReq)
           
-        case .UserCreatedTag(let tagInfo, _, let syncRequirement):
+        case .userCreatedTag(let tagInfo, _, let syncRequirement):
           var updatedSyncReq = syncRequirement
-          if case .Liked(_) = tagIdAndState.1 {
+          if case .liked(_) = tagIdAndState.1 {
             updatedSyncReq = syncRequirement.addLike()
           }
-          newDict[tag.id] = .UserCreatedTag(tagInfo: tagInfo, state: tagIdAndState.1, syncRequirement: updatedSyncReq)
+          newDict[tag.id] = .userCreatedTag(tagInfo: tagInfo, state: tagIdAndState.1, syncRequirement: updatedSyncReq)
         }
         
         return State(mode: state.mode, photoId: state.photoId, tags: newDict)

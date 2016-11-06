@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class PassThroughView: UIView {
+open class PassThroughView: UIView {
   
-  public override func hitTest(point: CGPoint,
-                               withEvent event: UIEvent!) -> UIView? {
-    if let hitView = super.hitTest(point, withEvent:event) {
+  open override func hitTest(_ point: CGPoint,
+                               with event: UIEvent!) -> UIView? {
+    if let hitView = super.hitTest(point, with:event) {
       if hitView == self {
         return nil
       }

@@ -10,28 +10,28 @@ import Foundation
 import UIKit
 
 public enum TagViewLocation {
-  case CustomLocation(point: CGPoint)
-  case Default
+  case customLocation(point: CGPoint)
+  case `default`
   
- func shallowEquals(otherLocation: TagViewLocation) -> Bool {
+ func shallowEquals(_ otherLocation: TagViewLocation) -> Bool {
     switch(self, otherLocation){
-    case (.CustomLocation(_), .CustomLocation(_)),
-         (.Default, .Default):
+    case (.customLocation(_), .customLocation(_)),
+         (.default, .default):
       return true
-    case (.CustomLocation(_), _),
-         (.Default, _):
+    case (.customLocation(_), _),
+         (.default, _):
       return false
     }
   }
   
-  func deepEquals(otherLocation: TagViewLocation) -> Bool {
+  func deepEquals(_ otherLocation: TagViewLocation) -> Bool {
     switch(self, otherLocation){
-    case (.CustomLocation(let point1), .CustomLocation(let point2)):
+    case (.customLocation(let point1), .customLocation(let point2)):
       return point1 == point2
-    case (.Default, .Default):
+    case (.default, .default):
       return true
-    case (.CustomLocation(_), _),
-         (.Default, _):
+    case (.customLocation(_), _),
+         (.default, _):
       return false
     }
   }

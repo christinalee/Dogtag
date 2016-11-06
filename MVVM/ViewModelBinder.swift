@@ -6,20 +6,20 @@
 import Foundation
 import RxSwift
 import RxCocoa
-//import NSObject_Rx
+import NSObject_Rx
 
 protocol ViewModelBinder: AnyObject {
   associatedtype VM
   
   /// implement this (don't call this)
-  func bindViews(vm: VM) -> (Arity, [Disposable])
+  func bindViews(_ vm: VM) -> (Arity, [Disposable])
   /// call this: you get this for free
-  func bind(vm: VM)
+  func bind(_ vm: VM)
 }
 extension ViewModelBinder {
-  func bind(vm: VM) {
+  func bind(_ vm: VM) {
     let (arity, disposables) = bindViews(vm)
     assert(arity == disposables.count)
-//    disposables.forEach{ ($0 as Disposable).addDisposableTo((self as! NSObject).rx_disposeBag) }
+    disposables.forEach{ ($0 as Disposable).addDisposableTo((self as! NSObject).rx_disposeBag) }
   }
 }

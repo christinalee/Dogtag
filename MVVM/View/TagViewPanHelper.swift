@@ -24,15 +24,15 @@ struct TagBoundaries {
 }
 
 class TagViewPanHelper {
-  private let VERTICAL_MARGIN = CGFloat(64)
+  fileprivate let VERTICAL_MARGIN = CGFloat(64)
   
-  func adjustedNewLocation(panLocationInView: CGPoint, newPanLocation: CGPoint, viewFrame: CGRect, superviewFrame: CGRect) -> CGPoint {
+  func adjustedNewLocation(_ panLocationInView: CGPoint, newPanLocation: CGPoint, viewFrame: CGRect, superviewFrame: CGRect) -> CGPoint {
     let desiredLocation = CGPoint(x: newPanLocation.x - panLocationInView.x, y: newPanLocation.y - panLocationInView.y)
     let tagBoundaries = getBoundaries(viewFrame, superviewFrame: superviewFrame)
     return clipToBoundariesIfNecessary(desiredLocation, tagBoundaries: tagBoundaries)
   }
   
-  func clipToBoundariesIfNecessary(desiredLocation: CGPoint, tagBoundaries: TagBoundaries) -> CGPoint {
+  func clipToBoundariesIfNecessary(_ desiredLocation: CGPoint, tagBoundaries: TagBoundaries) -> CGPoint {
     var adjustedLocation = desiredLocation
     
     if desiredLocation.x < tagBoundaries.minX {
@@ -50,7 +50,7 @@ class TagViewPanHelper {
     return adjustedLocation
   }
   
-  func getBoundaries(viewFrame: CGRect, superviewFrame: CGRect) -> TagBoundaries {
+  func getBoundaries(_ viewFrame: CGRect, superviewFrame: CGRect) -> TagBoundaries {
     let maxX = superviewFrame.width - viewFrame.width
     let maxY = (superviewFrame.height - VERTICAL_MARGIN) - viewFrame.height
     let minX = CGFloat(0)

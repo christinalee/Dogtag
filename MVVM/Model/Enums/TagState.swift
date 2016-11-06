@@ -10,55 +10,55 @@ import Foundation
 import UIKit
 
 public enum TagState {
-  case None
-  case DeleteMode
-  case Deleted
-  case Panning(locationInView: CGPoint)
-  case Liked(tagLocation: CGPoint)
-  case Created
-  case Updated
+  case none
+  case deleteMode
+  case deleted
+  case panning(locationInView: CGPoint)
+  case liked(tagLocation: CGPoint)
+  case created
+  case updated
   
   //this is a shallow equals and ignores enum args
-  func shallowEquals(otherState: TagState) -> Bool {
+  func shallowEquals(_ otherState: TagState) -> Bool {
     switch (self, otherState) {
-    case (.None, .None),
-         (.DeleteMode, .DeleteMode),
-         (.Deleted, .Deleted),
-         (.Panning, .Panning),
-         (.Liked, .Liked),
-         (.Created, .Created),
-         (.Updated, .Updated):
+    case (.none, .none),
+         (.deleteMode, .deleteMode),
+         (.deleted, .deleted),
+         (.panning, .panning),
+         (.liked, .liked),
+         (.created, .created),
+         (.updated, .updated):
       return true
-    case (.None, _),
-         (.DeleteMode, _),
-         (.Deleted, _),
-         (.Panning(_), _),
-         (.Liked(_), _),
-         (.Created, _),
-         (.Updated, _):
+    case (.none, _),
+         (.deleteMode, _),
+         (.deleted, _),
+         (.panning(_), _),
+         (.liked(_), _),
+         (.created, _),
+         (.updated, _):
       return false
     }
   }
   
-  func deepEquals(otherState: TagState) -> Bool {
+  func deepEquals(_ otherState: TagState) -> Bool {
     switch (self, otherState) {
-    case (.None, .None),
-         (.DeleteMode, .DeleteMode),
-         (.Deleted, .Deleted),
-         (.Created, .Created),
-         (.Updated, .Updated):
+    case (.none, .none),
+         (.deleteMode, .deleteMode),
+         (.deleted, .deleted),
+         (.created, .created),
+         (.updated, .updated):
       return true
-    case (.Panning(let location), .Panning(let location2)):
+    case (.panning(let location), .panning(let location2)):
       return location == location2
-    case (.Liked(let location), .Liked(let location2)):
+    case (.liked(let location), .liked(let location2)):
       return location == location2
-    case (.None, _),
-         (.DeleteMode, _),
-         (.Deleted, _),
-         (.Panning(_), _),
-         (.Liked(_), _),
-         (.Created, _),
-         (.Updated, _):
+    case (.none, _),
+         (.deleteMode, _),
+         (.deleted, _),
+         (.panning(_), _),
+         (.liked(_), _),
+         (.created, _),
+         (.updated, _):
       return false
     }
   }

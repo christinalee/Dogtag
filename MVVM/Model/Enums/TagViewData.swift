@@ -10,46 +10,46 @@ import Foundation
 import UIKit
 
 public enum TagViewData {
-  case ServerTag(tagInfo: PhotoTypes.Tag, state: TagState, syncRequirement: SyncRequirement)
-  case UserCreatedTag(tagInfo: UserTagInfo, state: TagState, syncRequirement: SyncRequirement)
+  case serverTag(tagInfo: PhotoTypes.Tag, state: TagState, syncRequirement: SyncRequirement)
+  case userCreatedTag(tagInfo: UserTagInfo, state: TagState, syncRequirement: SyncRequirement)
   
   var id: String {
     switch (self) {
-    case .ServerTag(let tagInfo, _, _):
+    case .serverTag(let tagInfo, _, _):
       return tagInfo.tagId
-    case .UserCreatedTag(let tagInfo, _, _):
+    case .userCreatedTag(let tagInfo, _, _):
       return tagInfo.id
     }
   }
   
   var state: TagState {
     switch (self) {
-    case .ServerTag(_, let state, _):
+    case .serverTag(_, let state, _):
       return state
-    case .UserCreatedTag(_, let state, _):
+    case .userCreatedTag(_, let state, _):
       return state
     }
   }
   
   var syncRequirement: SyncRequirement {
     switch (self) {
-    case .ServerTag(_, _, let syncRequirement):
+    case .serverTag(_, _, let syncRequirement):
       return syncRequirement
-    case .UserCreatedTag(_, _, let syncRequirement):
+    case .userCreatedTag(_, _, let syncRequirement):
       return syncRequirement
     }
   }
   
-  func move(tagLocation: CGPoint) -> TagViewData {
+  func move(_ tagLocation: CGPoint) -> TagViewData {
     switch (self) {
-    case .ServerTag(let tagInfo, _, let syncRequirement):
+    case .serverTag(let tagInfo, _, let syncRequirement):
       tagInfo.location = tagLocation
       let newSyncReq = syncRequirement.requireUpdate(.Move)
-      return .ServerTag(tagInfo: tagInfo, state: .Panning(locationInView: tagLocation), syncRequirement: newSyncReq)
-    case .UserCreatedTag(let tagInfo, _, let syncRequirement):
+      return .serverTag(tagInfo: tagInfo, state: .panning(locationInView: tagLocation), syncRequirement: newSyncReq)
+    case .userCreatedTag(let tagInfo, _, let syncRequirement):
       let newTagInfo = tagInfo.updateLocation(tagLocation)
       let newSyncReq = syncRequirement.requireUpdate(.Move)
-      return .UserCreatedTag(tagInfo: newTagInfo, state: .Panning(locationInView: tagLocation), syncRequirement: newSyncReq)
+      return .userCreatedTag(tagInfo: newTagInfo, state: .panning(locationInView: tagLocation), syncRequirement: newSyncReq)
     }
   }
 }

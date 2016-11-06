@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import NSObject_Rx
 
 class ViewController: UIViewController {
   weak var taggingViewController: TaggingViewController?
   weak var taggingSnapshot: UIView?
   
-  @IBAction func longPress(sender: UILongPressGestureRecognizer) {
-    if case .Began = sender.state {
-      createTagAtPoint(sender.locationInView(self.view))
+  @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+    if case .began = sender.state {
+      createTagAtPoint(sender.location(in: self.view))
     }
   }
   
@@ -23,45 +24,45 @@ class ViewController: UIViewController {
     
     // add the child
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    if let vc = storyboard.instantiateViewControllerWithIdentifier("TaggingViewController") as? TaggingViewController {
+    if let vc = storyboard.instantiateViewController(withIdentifier: "TaggingViewController") as? TaggingViewController {
       taggingViewController = vc
       
-      vc.tagCreationEventSubject.subscribeNext({ (event) in
+        vc.tagCreationEventSubject.subscribe(onNext: { (event) in
         switch(event){
-        case .Started:
+        case .started:
           self.tagCreationStarted()
-        case .Ended:
+        case .ended:
           self.tagCreationEnded()
         }
-      })//.addDisposableTo(rx_disposeBag)
+      }).addDisposableTo(rx_disposeBag)
       
       vc.view.translatesAutoresizingMaskIntoConstraints = true
       vc.view.frame = view.bounds
       addChildViewController(vc)
       view.addSubview(vc.view)
-      vc.didMoveToParentViewController(self)
+      vc.didMove(toParentViewController: self)
     }
   }
   
   deinit {
-    taggingViewController?.willMoveToParentViewController(nil)
+    taggingViewController?.willMove(toParentViewController: nil)
     taggingViewController?.view.removeFromSuperview()
     taggingViewController?.removeFromParentViewController()
     taggingViewController = nil
   }
   
-  @IBAction func tagButtonTapped(button: UIButton) {
+  @IBAction func tagButtonTapped(_ button: UIButton) {
     toggleTagCreation()
   }
 }
 
 extension ViewController {
-  private func toggleTagCreation() {
-    taggingViewController?.tagVCIntents.toggleTagMode.onNext(.Default)
+  fileprivate func toggleTagCreation() {
+    taggingViewController?.tagVCIntents.toggleTagMode.onNext(.default)
   }
   
-  func createTagAtPoint(longPressLocation: CGPoint) {
-    taggingViewController?.tagVCIntents.toggleTagMode.onNext(TagViewLocation.CustomLocation(point: longPressLocation))
+  func createTagAtPoint(_ longPressLocation: CGPoint) {
+    taggingViewController?.tagVCIntents.toggleTagMode.onNext(TagViewLocation.customLocation(point: longPressLocation))
   }
 }
 

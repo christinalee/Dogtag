@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import NSObject_Rx
 
 public enum TagCreationEvent {
-  case Started
-  case Ended
+  case started
+  case ended
 }
 
 class TaggingViewController: UIViewController, ViewModelBinder {
@@ -51,24 +52,24 @@ class TaggingViewController: UIViewController, ViewModelBinder {
 //    }
 //  }
   
-  override func prefersStatusBarHidden() -> Bool {
+  override var prefersStatusBarHidden : Bool {
     return true
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    tagCreationContainerView.hidden = true
+    tagCreationContainerView.isHidden = true
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
     realModel =  ConcreteTagModel(tagIntents: tagIntents, tagVCIntents: tagVCIntents)
     vm = TagViewModel.make(realModel)
     bind(vm)
     
-    backgroundView.hidden = true
+    backgroundView.isHidden = true
     originalContainerHeight = containerHeight.constant
     
     navigationController?.setNavigationBarHidden(true, animated: false)
@@ -86,7 +87,7 @@ class TaggingViewController: UIViewController, ViewModelBinder {
   }
   
   
-  private func textWithResizeBindable(textView: UITextView) -> UIBindingObserver<UITextView, String> {
+  fileprivate func textWithResizeBindable(_ textView: UITextView) -> UIBindingObserver<UITextView, String> {
     return UIBindingObserver<UITextView, String>(UIElement: textView, binding: { (textView: UITextView, text: String) in
       textView.text = text
       self.optTextViewDidChange(textView)
@@ -99,55 +100,55 @@ class TaggingViewController: UIViewController, ViewModelBinder {
     })
   }
   
-  func bindViews(vm: VM) -> (Arity, [Disposable]) {
+  func bindViews(_ vm: VM) -> (Arity, [Disposable]) {
     let vm = vm.drivers
     return (arity(TagViewModel.Drivers.init), [
       vm.backgroundHidden
-        .bindTo(backgroundView.rx_hidden),
+        .bindTo(backgroundView.rx.isHidden),
       
       vm.placeholderHidden
-        .bindTo(placeholderLabel.rx_hidden),
+        .bindTo(placeholderLabel.rx.isHidden),
       
       vm.text
         .filterNotNil()
         .bindTo(textWithResizeBindable(textView)),
       
       vm.tagTableHidden
-        .driveNext{ [weak self] isHidden in
-          self?.setViewHidden(self?.tagTableContainerView, hidden: isHidden, animated: true) { }
-      },
+        .drive(onNext: { [weak self] isHidden in
+            self?.setViewHidden(self?.tagTableContainerView, hidden: isHidden, animated: true) { }
+        }),
       
       vm.tagTableBridgeHidden
-        .driveNext{ [weak self] isHidden in
+        .drive(onNext:{ [weak self] isHidden in
           self?.setViewHidden(self?.tagTableBridgeView, hidden: isHidden, animated: true) { }
-      },
+      }),
       
       vm.tagCreationContainerHidden
-        .driveNext(self.onTagCreationContainerHidden), //todo: does this leak memory?
+        .drive(onNext: (self.onTagCreationContainerHidden)), //todo: does this leak memory?
       
       vm.displayTags
-        .driveNext(self.onDisplayTags), //todo: does this leak memory?
+        .drive(onNext: (self.onDisplayTags)), //todo: does this leak memory?
       
       vm.tagTableQuery
         .bindTo(yr_tagTableFilterText)
       ])
   }
   
-  private func onDisplayTags(tagDict: Dictionary<String, TagViewData>) {
+  fileprivate func onDisplayTags(_ tagDict: Dictionary<String, TagViewData>) {
     tagDict.values.forEach{ (tagViewData: TagViewData) in
       switch(tagViewData.state){
-      case .Created:
+      case .created:
         self.displayTag(tagViewData)
-      case .Deleted:
+      case .deleted:
         self.deleteTag(tagViewData)
-      case .Updated:
+      case .updated:
         //todo: can do a smarter update in future
         if let tagView = tagViewsDisplayed[tagViewData.id] {
           tagView.removeFromSuperview()
-          tagViewsDisplayed.removeValueForKey(tagViewData.id)
+          tagViewsDisplayed.removeValue(forKey: tagViewData.id)
         }
         self.displayTag(tagViewData)
-      case .DeleteMode, .Liked, .None, .Panning:
+      case .deleteMode, .liked, .none, .panning:
         //forward to tag
         if let tagView = self.tagViewsDisplayed[tagViewData.id] {
           tagView.tagState$.onNext(tagViewData.state)
@@ -158,11 +159,11 @@ class TaggingViewController: UIViewController, ViewModelBinder {
     }
   }
   
-  private func onTagCreationContainerHidden(isHidden: Bool) {
-    if isHidden { tagCreationEventSubject.onNext(.Ended) }
-    else { tagCreationEventSubject.onNext(.Started) }
+  fileprivate func onTagCreationContainerHidden(_ isHidden: Bool) {
+    if isHidden { tagCreationEventSubject.onNext(.ended) }
+    else { tagCreationEventSubject.onNext(.started) }
     
-    backgroundView.hidden = isHidden
+    backgroundView.isHidden = isHidden
     setViewHidden(tagCreationContainerView, hidden: isHidden, animated: true) { [weak self] in
       if isHidden {
         self?.textView.resignFirstResponder()
@@ -176,21 +177,21 @@ class TaggingViewController: UIViewController, ViewModelBinder {
     }
   }
   
-  private func deleteTag(tagViewData: TagViewData) {
+  fileprivate func deleteTag(_ tagViewData: TagViewData) {
     if let tagView = tagViewsDisplayed[tagViewData.id] {
       tagView.removeFromSuperview()
-      tagViewsDisplayed.removeValueForKey(tagViewData.id)
+      tagViewsDisplayed.removeValue(forKey: tagViewData.id)
       tagVCIntents.tagRemovedFromVC.onNext(tagViewData.id)
     } else {
       fatalError("Trying to remove a tagView that is not in the dict \(tagViewData)")
     }
   }
   
-  private func prepareBridgeView() {
+  fileprivate func prepareBridgeView() {
     if tagTableBridgeView == nil {
       let bridgeView = UIView()
       bridgeView.frame.size = CGSize(width: tagTableContainerView.frame.width, height: 20)
-      bridgeView.backgroundColor = UIColor.whiteColor()
+      bridgeView.backgroundColor = UIColor.white
       bridgeView.alpha = 0.0
       self.view.addSubview(bridgeView)
       self.tagTableBridgeView = bridgeView
@@ -200,31 +201,31 @@ class TaggingViewController: UIViewController, ViewModelBinder {
     tagTableBridgeView?.frame.origin = CGPoint(x: tagTableContainerView.frame.origin.x, y: tagTableContainerView.frame.origin.y - 10)
   }
   
-  func setViewHidden(view: UIView?, hidden: Bool, animated: Bool, onComplete: () -> Void) {
+  func setViewHidden(_ view: UIView?, hidden: Bool, animated: Bool, onComplete: @escaping () -> Void) {
     guard let view = view else { return }
     
-    if view.hidden == hidden { return }
+    if view.isHidden == hidden { return }
     
     var animationTime = 0.3
     if animated == false { animationTime = 0.0 }
     
-    if view.hidden { view.hidden = false }
+    if view.isHidden { view.isHidden = false }
     
-    UIView.animateWithDuration(animationTime, animations: { () -> Void in
+    UIView.animate(withDuration: animationTime, animations: { () -> Void in
       if hidden {
         view.alpha = 0.0
       } else {
         view.alpha = 1.0
       }
-    }) { (_) -> Void in
-      view.hidden = hidden
+    }, completion: { (_) -> Void in
+      view.isHidden = hidden
       onComplete()
-    }
+    }) 
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "segueTaggingEmbedTaggingTable" {
-      if let tableVC = segue.destinationViewController as? TaggingTableViewController {
+      if let tableVC = segue.destination as? TaggingTableViewController {
         taggingTableViewController = tableVC
         taggingTableViewController.taggingDelegate = self
       }
@@ -240,61 +241,61 @@ class TaggingViewController: UIViewController, ViewModelBinder {
   // TODO: HACK CITY
   func unload() {
     taggingTableViewController?.viewWillDisappear(false)
-    taggingTableViewController?.willMoveToParentViewController(nil)
+    taggingTableViewController?.willMove(toParentViewController: nil)
     taggingTableViewController?.view.removeFromSuperview()
     taggingTableViewController?.removeFromParentViewController()
     taggingTableViewController?.taggingDelegate = nil
     taggingTableViewController = nil
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     tagVCIntents.syncWithServer.onNext()
     super.viewWillDisappear(animated)
   }
   
   func makeTextViewFirstResponder() {
-    backgroundView.hidden = false
+    backgroundView.isHidden = false
     textView.becomeFirstResponder()
   }
   
-  @IBAction func tappedBackgroundView(caller: NSObject) {
+  @IBAction func tappedBackgroundView(_ caller: NSObject) {
     tagVCIntents.backgroundTapped.onNext()
   }
 
-  func createShadow(view: UIView?) {
+  func createShadow(_ view: UIView?) {
     view?.layer.shadowOpacity = 0.5
     view?.layer.shadowRadius = 2.0
-    view?.layer.shadowColor = UIColor.blackColor().CGColor
-    view?.layer.shadowOffset = CGSizeMake(0.0, 1.0)
+    view?.layer.shadowColor = UIColor.black.cgColor
+    view?.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
     view?.layer.shouldRasterize = true
-    view?.layer.rasterizationScale = UIScreen.mainScreen().scale
+    view?.layer.rasterizationScale = UIScreen.main.scale
   }
 }
 
 //making and displaying tags
 extension TaggingViewController {
-  private func displayTag(tagViewData: TagViewData) {
+  fileprivate func displayTag(_ tagViewData: TagViewData) {
     switch(tagViewData) {
-    case .ServerTag(let tag, _, _):
+    case .serverTag(let tag, _, _):
       self.displayTagFromServer(tag)
-    case .UserCreatedTag(let tagInfo, _, _):
+    case .userCreatedTag(let tagInfo, _, _):
       self.displayTagFromUser(tagInfo)
     }
   }
   
-  private func displayTagFromServer(tag: PhotoTypes.Tag) {
+  fileprivate func displayTagFromServer(_ tag: PhotoTypes.Tag) {
     let imgUrl = tag.createdBy == TagOwner.Own ? "dog-pink" : "dog-yellow"
     let tagView = TagView(tagId: tag.tagId, userId: tag.createdBy, text: tag.text, location: tag.location, parentSize: getParentSize(), imgUrl: imgUrl, tagIntents: tagIntents)
     tagContainerView.addSubview(tagView)
     tagViewsDisplayed[tagView.viewId] = tagView
   }
   
-  private func displayTagFromUser(tagInfo: UserTagInfo) {
+  fileprivate func displayTagFromUser(_ tagInfo: UserTagInfo) {
     let tagView: TagView
     let tagOwner = TagOwner.Own //By definition, tag is owned by current user
     
     switch(tagInfo.location){
-    case .Some(.CustomLocation(let location)):
+    case .some(.customLocation(let location)):
       tagView = TagView(tagId: tagInfo.id, userId: tagOwner, text: tagInfo.text, location: location, parentSize: getParentSize(), imgUrl: tagInfo.imgUrl, centerOnTooth: tagInfo.centerOnTooth, tagIntents: tagIntents)
     default:
       let location = tagCreationContainerView.center
@@ -305,64 +306,64 @@ extension TaggingViewController {
     tagViewsDisplayed[tagView.viewId] = tagView
   }
   
-  private func getParentSize() -> CGSize {
+  fileprivate func getParentSize() -> CGSize {
     if let size = parentPhotoSize {
       return size
     }
     
-    return CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+    return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
   }
 }
 
 //creating new tags with text view
 extension TaggingViewController: UITextViewDelegate {
-  func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     tagVCIntents.textChanged.onNext(text)
     return false 
   }
   
-  func optTextViewDidChange(textView: UITextView?){
+  func optTextViewDidChange(_ textView: UITextView?){
     guard textView != nil else { return }
     
     resizeIfNeeded()
   }
   
-  private func showPlaceholderIfNeeded() {
+  fileprivate func showPlaceholderIfNeeded() {
     if (textView.text.characters.count) > 0 {
-      placeholderLabel.hidden = true
+      placeholderLabel.isHidden = true
     } else {
-      placeholderLabel.hidden = false
+      placeholderLabel.isHidden = false
     }
   }
   
-  private func resizeIfNeeded() {
-    textView.layoutManager.ensureLayoutForTextContainer(textView.textContainer)
+  fileprivate func resizeIfNeeded() {
+    textView.layoutManager.ensureLayout(for: textView.textContainer)
     
-    let containerSize = textView.layoutManager.usedRectForTextContainer(textView.textContainer).size
+    let containerSize = textView.layoutManager.usedRect(for: textView.textContainer).size
     let height = ceil(containerSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom)*1.25
     
     containerHeight.constant = height
     textView.layoutIfNeeded()
-    textView.setContentOffset(CGPointMake(0, -textView.contentInset.top), animated: false)
+    textView.setContentOffset(CGPoint(x: 0, y: -textView.contentInset.top), animated: false)
   }
 }
 
 extension TaggingViewController: TaggingTableDelegate {
-  func matchedContactSelected(matchedContact: ContactModel.MatchedContact) {
+  func matchedContactSelected(_ matchedContact: ContactModel.MatchedContact) {
     let currentTextViewText = textView.text
     
-    let words: [String] = currentTextViewText.characters.split{$0 == " "}.map(String.init)
+    let words: [String] = currentTextViewText!.characters.split{$0 == " "}.map(String.init)
     if let partialTag = words.last {
       let fullTag = "@" + matchedContact.username
-      let startIdx = fullTag.startIndex.advancedBy(partialTag.characters.count)
-      let remainingTagText = fullTag.substringFromIndex(startIdx)
+      let startIdx = fullTag.characters.index(fullTag.startIndex, offsetBy: partialTag.characters.count)
+      let remainingTagText = fullTag.substring(from: startIdx)
       
       tagVCIntents.textChanged.onNext(remainingTagText + " ")
     }
   }
   
-  func sizeChanged(contentSize: CGSize) {
-    dispatch_async(dispatch_get_main_queue()) {
+  func sizeChanged(_ contentSize: CGSize) {
+    DispatchQueue.main.async {
       var frame = self.tagTableContainerView.frame
       let maxHeight = CGFloat(250)
       frame.size.height = min(contentSize.height, maxHeight)

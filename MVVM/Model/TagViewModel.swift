@@ -25,28 +25,28 @@ struct TagViewModel {
   typealias State = ConcreteTagModel.State
   let drivers: Drivers
   
-  static func make(source: TagModel) -> TagViewModel {
+  static func make(_ source: TagModel) -> TagViewModel {
     let model: Driver<State> = source.model
   
     let text: Driver<String?> = model.map{ (model: State) in
       switch(model.mode){
-      case .Tagging(let tagText, _):
+      case .tagging(let tagText, _):
         return tagText
-      case .TaggingAndMentioning(let tagText, _, _):
+      case .taggingAndMentioning(let tagText, _, _):
         return tagText
-      case .None:
+      case .none:
         return ""
-      case .DeletingTag:
+      case .deletingTag:
         return nil
       }
     }.distinctUntilChanged { x, y in x == y }
     
     let backgroundHidden = model.map{ (model: State) -> Bool in
-      !model.mode.shallowEquals(.DeletingTag)
+      !model.mode.shallowEquals(.deletingTag)
     }.distinctUntilChanged()
     
     let tagTableHidden = model.map{ (model: State) -> Bool in
-      !model.mode.shallowEquals(.TaggingAndMentioning(text: "", searchQuery: "", location: nil))
+      !model.mode.shallowEquals(.taggingAndMentioning(text: "", searchQuery: "", location: nil))
     }.distinctUntilChanged()
     
     let tagTableBridgeHidden = tagTableHidden
@@ -56,7 +56,7 @@ struct TagViewModel {
         return false
       }
       
-      return lhs.reduce(true, combine: { (curr: Bool, keyVal: (String, TagViewData)) -> Bool in
+      return lhs.reduce(true, { (curr: Bool, keyVal: (String, TagViewData)) -> Bool in
         if !curr { return false } //if false, remain false
         
         if let rhsVal = rhs[keyVal.0] {
@@ -71,29 +71,29 @@ struct TagViewModel {
     
     let tagCreationContainerHidden: Driver<Bool> = model.map{ (state: State) in
       switch(state.mode){
-      case .Tagging(_, _), .TaggingAndMentioning(_, _, _):
+      case .tagging(_, _), .taggingAndMentioning(_, _, _):
         return false
-      case .DeletingTag, .None:
+      case .deletingTag, .none:
         return true
       }
     }.distinctUntilChanged()
     
     let placeholderHidden: Driver<Bool> = model.map{ (state: State) in
       switch(state.mode){
-      case .Tagging(let text, _):
+      case .tagging(let text, _):
         return text != ""
-      case .TaggingAndMentioning(let text, _, _):
+      case .taggingAndMentioning(let text, _, _):
         return text != ""
-      case .None, .DeletingTag:
+      case .none, .deletingTag:
         return false //todo: it is illogical that we set placeholder hidden in these cases because this view isn't on screen
       }
     }.distinctUntilChanged()
     
     let tagTableQuery: Driver<String> = model.map{ (state: State) in
       switch(state.mode){
-      case .TaggingAndMentioning(_, let searchQuery, _):
+      case .taggingAndMentioning(_, let searchQuery, _):
         return searchQuery
-      case .Tagging(_, _), .DeletingTag, .None:
+      case .tagging(_, _), .deletingTag, .none:
         return ""
       }
     }.distinctUntilChanged()

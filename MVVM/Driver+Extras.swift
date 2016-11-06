@@ -6,8 +6,12 @@
 import RxSwift
 import RxCocoa
 
-extension Driver {
-  func bindTo<O: ObserverType where O.E == Element>(o: O) -> Disposable {
+protocol BindTo {
+    func bindTo<O: ObserverType>(_ o: O) -> Disposable //where O.E == Element
+}
+
+extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E: Any {
+  func bindTo<O: ObserverType>(_ o: O) -> Disposable where O.E == E {
     return self.asObservable().bindTo(o)
   }
 }
@@ -18,6 +22,7 @@ protocol OptionalType {
   var empty: Bool { get }
   func unwrap() -> Self.Value
 }
+
 extension Optional: OptionalType {
   typealias Value = Wrapped
   var empty: Bool {
@@ -25,8 +30,9 @@ extension Optional: OptionalType {
   }
   func unwrap() -> Value { return self! }
 }
-extension Driver where Element: OptionalType {
-  func filterNotNil() -> Driver<Element.Value> {
-    return self.filter{ !$0.empty }.map{ $0.unwrap() }
-  }
+
+extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E: OptionalType {
+    func filterNotNil() -> Driver<E.Value> {
+        return self.filter{ !$0.empty }.map{ $0.unwrap() }
+    }
 }

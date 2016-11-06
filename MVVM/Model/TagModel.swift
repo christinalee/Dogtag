@@ -35,10 +35,10 @@ class ConcreteTagModel: TagModel {
     //create fake server tag for initial state -- included for Demo purposes only
     var initialDict = Dictionary<String, TagViewData>()
     let serverTag1 = TagCreationHelper.makeNewServerTag("Welcome!", location: CGPoint(x: 5, y: 0.5), userId: TagOwner.OtherPerson)
-    let tag1 = TagViewData.ServerTag(tagInfo: serverTag1, state: .Created, syncRequirement: .None)
+    let tag1 = TagViewData.serverTag(tagInfo: serverTag1, state: .created, syncRequirement: .none)
     initialDict[tag1.id] = tag1
     
-    let intialState = State(mode: .None, photoId: nil, tags: initialDict)
+    let intialState = State(mode: .none, photoId: nil, tags: initialDict)
     let tagReducers: Observable<(State) -> State> = TagIntentsHelper.reduce(tagIntents)
     let vcReducers: Observable<(State) -> State> = TagVCIntentsHelper.reduce(tagVCIntents)
     

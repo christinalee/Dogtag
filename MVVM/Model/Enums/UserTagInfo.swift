@@ -16,8 +16,8 @@ public struct UserTagInfo {
   let imgUrl: String
   let centerOnTooth: Bool
   
-  func updateLocation(location: CGPoint) -> UserTagInfo {
-    let newLocation: TagViewLocation = .CustomLocation(point: location)
+  func updateLocation(_ location: CGPoint) -> UserTagInfo {
+    let newLocation: TagViewLocation = .customLocation(point: location)
     return UserTagInfo(id: self.id, text: self.text, location: newLocation, imgUrl: self.imgUrl, centerOnTooth: self.centerOnTooth)
   }
 }

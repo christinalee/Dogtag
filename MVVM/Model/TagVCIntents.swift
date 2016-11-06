@@ -23,7 +23,7 @@ public struct TagVCIntents {
 struct TagVCIntentsHelper {
   typealias State = ConcreteTagModel.State
   
-  static func reduce(intents: TagVCIntents) -> Observable<(State) -> State>{
+  static func reduce(_ intents: TagVCIntents) -> Observable<(State) -> State>{
     let backgroundTap = intents.backgroundTapped.map {
       TagVCIntentsHelper.backgroundTappedReducer()
     }
@@ -39,11 +39,11 @@ struct TagVCIntentsHelper {
     let textChanged = intents.textChanged.map{ text in
       switch(text){
       case "\n":
-        return TextChange.NewLine
+        return TextChange.newLine
       case "":
-        return TextChange.DeletedChar
+        return TextChange.deletedChar
       default:
-        return TextChange.AddedText(text: text)
+        return TextChange.addedText(text: text)
       }
       }.map { text in
         TagVCIntentsHelper.textChangedReducer(text)
@@ -81,84 +81,84 @@ struct TagVCIntentsHelper {
     print("background tapped")
     return { state in
       switch(state.mode) {
-      case .DeletingTag:
+      case .deletingTag:
         //todo: find a good naming pardigm here
         let updatedTags = self.backgroundTappedFromDelete(state)
-        return State(mode: .None, photoId: state.photoId, tags: updatedTags)
+        return State(mode: .none, photoId: state.photoId, tags: updatedTags)
         
-      case .None:
+      case .none:
         return state
         
-      case .Tagging(let text, let location):
+      case .tagging(let text, let location):
         let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
-        return State(mode: .None, photoId: state.photoId, tags: tagDict)
+        return State(mode: .none, photoId: state.photoId, tags: tagDict)
         
-      case .TaggingAndMentioning(let text, _, let location):
+      case .taggingAndMentioning(let text, _, let location):
         let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
-        return State(mode: .None, photoId: state.photoId, tags: tagDict)
+        return State(mode: .none, photoId: state.photoId, tags: tagDict)
       }
     }
   }
   
-  private static func backgroundTappedFromDelete(state: State) -> Dictionary<String, TagViewData> {
+  fileprivate static func backgroundTappedFromDelete(_ state: State) -> Dictionary<String, TagViewData> {
     var newTags = state.tags
     state.tags.values.filter({ (tagViewData) -> Bool in
       switch(tagViewData){
-      case .ServerTag(_, let state, _):
-        return state.shallowEquals(.DeleteMode)
-      case .UserCreatedTag(_, let state, _):
-        return state.shallowEquals(.DeleteMode)
+      case .serverTag(_, let state, _):
+        return state.shallowEquals(.deleteMode)
+      case .userCreatedTag(_, let state, _):
+        return state.shallowEquals(.deleteMode)
       }
     }).forEach({ (tagViewData) in
       switch(tagViewData){
-      case .ServerTag(let tagInfo, _, let syncRequirement):
-        newTags[tagInfo.tagId] = TagViewData.ServerTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
-      case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-        newTags[tagInfo.id] = TagViewData.UserCreatedTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
+      case .serverTag(let tagInfo, _, let syncRequirement):
+        newTags[tagInfo.tagId] = TagViewData.serverTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
+      case .userCreatedTag(let tagInfo, _, let syncRequirement):
+        newTags[tagInfo.id] = TagViewData.userCreatedTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
       }
     })
     return newTags
   }
   
   //todo: figure out how to combine this with the background Reducer (maybe). only diff case is none I believe
-  static func toggleTagModeReducer(location: TagViewLocation?) -> (State) -> State {
+  static func toggleTagModeReducer(_ location: TagViewLocation?) -> (State) -> State {
     return { state in
       switch(state.mode){
         
-      case .DeletingTag:
+      case .deletingTag:
         var newDict = state.tags
         newDict.values.filter({ (tagViewData) -> Bool in
-          return tagViewData.state.shallowEquals(.DeleteMode)
+          return tagViewData.state.shallowEquals(.deleteMode)
         }).forEach({ (tagViewData) in
           switch (tagViewData) {
-          case .ServerTag(let tagInfo, _, let syncRequirement):
-            newDict[tagInfo.tagId] = TagViewData.ServerTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
-          case .UserCreatedTag(let tagInfo, _, let syncRequirement):
-            newDict[tagInfo.id] = TagViewData.UserCreatedTag(tagInfo: tagInfo, state: .None, syncRequirement: syncRequirement)
+          case .serverTag(let tagInfo, _, let syncRequirement):
+            newDict[tagInfo.tagId] = TagViewData.serverTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
+          case .userCreatedTag(let tagInfo, _, let syncRequirement):
+            newDict[tagInfo.id] = TagViewData.userCreatedTag(tagInfo: tagInfo, state: .none, syncRequirement: syncRequirement)
           }
         })
-        return State(mode: .None, photoId: state.photoId, tags: newDict)
+        return State(mode: .none, photoId: state.photoId, tags: newDict)
         
-      case .None:
-        return State(mode: .Tagging(text: "", location: location), photoId: state.photoId, tags: state.tags)
+      case .none:
+        return State(mode: .tagging(text: "", location: location), photoId: state.photoId, tags: state.tags)
         
-      case .Tagging(let text, let location):
+      case .tagging(let text, let location):
         let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
-        return State(mode: .None, photoId: state.photoId, tags: tagDict)
+        return State(mode: .none, photoId: state.photoId, tags: tagDict)
         
-      case .TaggingAndMentioning(let text, _, let location):
+      case .taggingAndMentioning(let text, _, let location):
         //todo: what to do here? go back to tagging? go back to none? -> I think none is correct
         let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
-        return State(mode: .None, photoId: state.photoId, tags: tagDict)
+        return State(mode: .none, photoId: state.photoId, tags: tagDict)
       }
     }
   }
   
-  private static func conditionallyUpdateTagsDict(text: String, location: TagViewLocation?, currentTags: Dictionary<String, TagViewData>) -> Dictionary<String, TagViewData> {
+  fileprivate static func conditionallyUpdateTagsDict(_ text: String, location: TagViewLocation?, currentTags: Dictionary<String, TagViewData>) -> Dictionary<String, TagViewData> {
     if !text.isEmpty {
       let newTag = TagCreationHelper.makeNewTag(text, location: location)
-      let syncReq: SyncRequirement = .Update(action: .Create)
-      let newTagViewData = TagViewData.UserCreatedTag(tagInfo: newTag, state: .Created, syncRequirement: syncReq)
+      let syncReq: SyncRequirement = .update(action: .Create)
+      let newTagViewData = TagViewData.userCreatedTag(tagInfo: newTag, state: .created, syncRequirement: syncReq)
       
       var newDict = currentTags
       newDict[newTagViewData.id] = newTagViewData
@@ -174,24 +174,24 @@ struct TagVCIntentsHelper {
     return toggleTagModeReducer(nil)
   }
   
-  static func textChangedReducer(textChange: TextChange) -> (State) -> State {
+  static func textChangedReducer(_ textChange: TextChange) -> (State) -> State {
     return { state in
       switch(textChange){
-      case .AddedText(let text):
+      case .addedText(let text):
         return TextChangedHelper.handleAddText(state, addedText: text)
-      case .DeletedChar:
+      case .deletedChar:
         return TextChangedHelper.handleDeletion(state)
-      case .NewLine:
+      case .newLine:
         return TextChangedHelper.handleNewLine(state)
       }
     }
   }
   
-  static func tagRemovedFromVCReducer(tagId: String) -> (State) -> State {
+  static func tagRemovedFromVCReducer(_ tagId: String) -> (State) -> State {
    return { state in
       if let _ = state.tags[tagId] {
         var newDict = state.tags
-        newDict.removeValueForKey(tagId)
+        newDict.removeValue(forKey: tagId)
         return State(mode: state.mode, photoId: state.photoId, tags: newDict)
       }
       print("freak out! trying to remove a nonexistant tag \(tagId)")

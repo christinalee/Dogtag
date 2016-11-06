@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 protocol TaggingTableDelegate: class {
-  func matchedContactSelected(matchedContact: ContactModel.MatchedContact)
-  func sizeChanged(contentSize: CGSize)
+  func matchedContactSelected(_ matchedContact: ContactModel.MatchedContact)
+  func sizeChanged(_ contentSize: CGSize)
 }
 
-public class TaggingTableViewController: UITableViewController {
+open class TaggingTableViewController: UITableViewController {
   weak var taggingDelegate: TaggingTableDelegate?
 //
 //  public override func viewWillAppear(animated: Bool) {
@@ -86,7 +86,7 @@ public class TaggingTableViewController: UITableViewController {
 //    taggingDelegate?.sizeChanged(self.tableView.contentSize)
 //  }
 //  
-  public func updateSearchText(queryString: String) {
+  open func updateSearchText(_ queryString: String) {
 //    dataSource.filterItems(queryString).onSuccess(Queue.main.context) { _ in
 //      self.reloadData()
 //    }
