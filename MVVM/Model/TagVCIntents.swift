@@ -53,14 +53,6 @@ struct TagVCIntentsHelper {
       TagVCIntentsHelper.tagRemovedFromVCReducer(tagId)
     }
     
-//    let upperCardChanged: Observable<(State) -> State> = intents.upperCardChanged.map{ (photoData: PhotoData) in
-//      TagVCIntentsHelper.upperCardChangedReducer(photoData)
-//    }
-//    
-//    let photoDataChanged = intents.photoDataChanged.map{ (photoData) in
-//      TagVCIntentsHelper.photoDataChangedReducer(photoData)
-//    }
-    
     let syncWithServer = intents.syncWithServer.map{ _ in
       TagVCIntentsHelper.syncWithServerReducer()
     }
@@ -71,8 +63,6 @@ struct TagVCIntentsHelper {
       toggleTagMode,
       textChanged,
       tagRemovedFromVC,
-//      upperCardChanged,
-//      photoDataChanged,
       syncWithServer
       ).merge()
   }
@@ -82,18 +72,13 @@ struct TagVCIntentsHelper {
     return { state in
       switch(state.mode) {
       case .deletingTag:
-        //todo: find a good naming pardigm here
         let updatedTags = self.backgroundTappedFromDelete(state)
         return State(mode: .none, photoId: state.photoId, tags: updatedTags)
         
       case .none:
         return state
         
-      case .tagging(let text, let location):
-        let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
-        return State(mode: .none, photoId: state.photoId, tags: tagDict)
-        
-      case .taggingAndMentioning(let text, _, let location):
+      case .tagging(let text, let location), .taggingAndMentioning(let text, _, let location):
         let tagDict = self.conditionallyUpdateTagsDict(text, location: location, currentTags: state.tags)
         return State(mode: .none, photoId: state.photoId, tags: tagDict)
       }

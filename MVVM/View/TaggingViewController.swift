@@ -44,14 +44,6 @@ class TaggingViewController: UIViewController, ViewModelBinder {
   var realModel: ConcreteTagModel!
   var vm: VM!
   
-//  var photoData: PhotoData? {
-//    didSet {
-//      if let photoData = photoData {
-//        tagVCIntents.photoDataChanged.onNext(photoData)
-//      }
-//    }
-//  }
-  
   override var prefersStatusBarHidden : Bool {
     return true
   }
@@ -231,12 +223,6 @@ class TaggingViewController: UIViewController, ViewModelBinder {
       }
     }
   }
-  
-//  func upperCardChanged(parentPhotoSize: CGSize, photoData: PhotoData ) {
-////    taggingModel?.sync()
-//    self.parentPhotoSize = parentPhotoSize
-//    tagVCIntents.upperCardChanged.onNext(photoData)
-//  }
   
   // TODO: HACK CITY
   func unload() {
